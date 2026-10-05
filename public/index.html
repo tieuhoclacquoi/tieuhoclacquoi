@@ -17,26 +17,58 @@
       background-color: #f0f4f8;
       font-family: "Times New Roman", sans-serif;
     }
+
+    /* === HEADER CHÍNH === */
     .header-top {
+      background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 12px 12px 0 0;
       display: flex !important;
       justify-content: space-between !important;
       align-items: center !important;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
     }
     .header-left {
       display: flex;
       align-items: center;
       flex-shrink: 0;
     }
-    .header-center h2 {
+    .logo-img {
+      height: 70px;
+      margin-right: 15px;
+      border-radius: 8px;
+    }
+    .school-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .school-slogan {
+      font-size: 14px;
+      margin: 4px 0 0 0;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .header-center {
+      text-align: center;
+      flex: 1;
+      padding: 0 15px;
+    }
+    .page-title {
       font-size: 28px;
       font-weight: bold;
       margin: 0;
     }
+    .datetime-box {
+      text-align: right;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
     .date-part {
       font-size: 15px;
-      color: #fff;
       margin-bottom: 4px;
     }
     .time-part {
@@ -45,29 +77,13 @@
       color: #ff3366;
     }
 
-    /* === PHẦN NGÀY & ĐỒNG HỒ MỚI === */
-    .datetime-box {
-      text-align: center;
-      min-width: 180px;
-    }
-    .date-part {
-      font-size: 16px;
-      color: #ffffff;
-      margin-bottom: 6px;
-    }
-    .time-part {
-      font-size: 28px;
-      font-weight: bold;
-      color: #ff3366; /* Màu hồng đỏ → đổi thành #ff0000 nếu muốn đỏ thuần */
-      letter-spacing: 1px;
-    }
-
+    /* === KHỐI === */
     .khoi-card {
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       height: 100%;
-      border: 4px solid; /* Viền đậm */
+      border: 4px solid;
     }
     .khoi-card.k1 { border-color: #0b5ed7; }
     .khoi-card.k2 { border-color: #198754; }
@@ -113,7 +129,7 @@
     .k4 .lop-tag { background-color: var(--khoi4); }
     .k5 .lop-tag { background-color: var(--khoi5); }
     .gv-name { flex: 1; font-size: 15px; }
-    .text-success { color: #28a745; font-size: 13px; }
+    .truong-khoi { color: #28a745; font-size: 13px; }
 
     .stats-bar {
       background-color: #e9ecef;
@@ -130,6 +146,7 @@
       border-radius: 6px;
       font-weight: bold;
       border: none;
+      white-space: nowrap;
     }
     .footer-bar {
       background-color: #0b5ed7;
@@ -138,8 +155,10 @@
       border-radius: 0 0 12px 12px;
       margin-top: 20px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
     }
     .khoi-link { text-decoration: none; color: inherit; display: block; }
   </style>
@@ -148,31 +167,23 @@
   <div class="container py-4">
 
     <!-- HEADER CHÍNH -->
-     <div class="header-top">
-      <div class="header-left d-flex align-items-center">
-        <!-- Logo Trường -->
+    <div class="header-top">
+      <div class="header-left">
         <img src="https://drive.google.com/uc?export=view&id=12HVKo7ZPDijs7wpt42N3XYj3ISEMXPl7" 
-             alt="Logo Trường Tiểu học Lạc Quới" 
-             style="height: 75px; margin-right: 18px; flex-shrink: 0;">
+             alt="Logo Trường Tiểu học Lạc Quới" class="logo-img">
         <div>
-          <h5 style="font-size: 18px; font-weight: bold; margin: 0; line-height: 1.3;">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
-          <p style="font-size: 14px; margin: 4px 0 0 0; font-style: italic; opacity: 0.9;">"Tất cả vì học sinh thân yêu"</p>
+          <h5 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
+          <p class="school-slogan">"Tất cả vì học sinh thân yêu"</p>
         </div>
       </div>
 
-      <div class="header-center" style="text-align: center; flex: 1; padding: 0 15px;">
-        <h2 style="font-size: 28px; font-weight: bold; margin: 0;">GIÁO VIÊN CÁC KHỐI</h2>
+      <div class="header-center">
+        <h2 class="page-title">GIÁO VIÊN CÁC KHỐI</h2>
       </div>
 
-      <div class="datetime-box" style="text-align: right; min-width: 160px; flex-shrink: 0;">
-        <div class="date-part" id="dateDisplay" style="font-size: 15px; margin-bottom: 4px;">Thứ Hai, 05/10/2026</div>
-        <div class="time-part" id="timeDisplay" style="font-size: 26px; font-weight: bold; color: #ff3366;">22:48:01</div>
-      </div>
-    
-      <!-- PHẦN NGÀY + ĐỒNG HỒ ĐÃ SỬA -->
       <div class="datetime-box">
         <div class="date-part" id="dateDisplay">Thứ Hai, 05/10/2026</div>
-        <div class="time-part" id="timeDisplay">21:37:58</div>
+        <div class="time-part" id="timeDisplay">22:56:00</div>
       </div>
     </div>
 
@@ -186,7 +197,7 @@
             <div class="khoi-header k1">📁 KHỐI 1</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">1A</span><span class="gv-name">Trần Phan Diễm Trang <small class="text-success">(Khối trưởng)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">1A</span><span class="gv-name">Trần Phan Diễm Trang <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">1B</span><span class="gv-name">Nguyễn Thị Thanh Thảo</span></div>
             <div class="gv-item"><span class="lop-tag">1C</span><span class="gv-name">Lê Thị Yến Thiên</span></div>
             <div class="gv-item"><span class="lop-tag">GVC_TD1</span><span class="gv-name">Nguyễn Văn Sang</span></div>
@@ -202,7 +213,7 @@
             <div class="khoi-header k2">📁 KHỐI 2</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">2A</span><span class="gv-name">Trần Thị Ngọc Thơ <small class="text-success">(Khối trưởng)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">2A</span><span class="gv-name">Trần Thị Ngọc Thơ <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">2B</span><span class="gv-name">Lê Thị Thúy Loan</span></div>
             <div class="gv-item"><span class="lop-tag">2C</span><span class="gv-name">Lê Thị Tuấn Kha</span></div>
             <div class="gv-item"><span class="lop-tag">GVC_MT</span><span class="gv-name">Trần Quốc Đạt</span></div>
@@ -218,8 +229,8 @@
             <div class="khoi-header k3">📁 KHỐI 3</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">3B</span><span class="gv-name">Thạch Tuyết Xuân <small class="text-success">(Khối trưởng)</small></span></div>
-            <div class="gv-item"><span class="lop-tag">3A</span><span class="gv-name">Trần Thị Mỹ Linh</span></div>
+            <div class="gv-item"><span class="lop-tag">3A</span><span class="gv-name">Thạch Tuyết Xuân <small class="truong-khoi">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">3B</span><span class="gv-name">Trần Thị Mỹ Linh</span></div>
             <div class="gv-item"><span class="lop-tag">3C</span><span class="gv-name">Trình Thị Bích Phượng</span></div>
             <div class="gv-item"><span class="lop-tag">3D</span><span class="gv-name">Phan Thị Kim Loan</span></div>
             <div class="gv-item"><span class="lop-tag">GVC_AN</span><span class="gv-name">Nguyễn Chí Tâm</span></div>
@@ -234,7 +245,7 @@
             <div class="khoi-header k4">📁 KHỐI 4</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">4A</span><span class="gv-name">Lưu Thị Cẩm Loan <small class="text-success">(Khối trưởng)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">4A</span><span class="gv-name">Lưu Thị Cẩm Loan <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">4B</span><span class="gv-name">Mai Thị Thảo Ngân</span></div>
             <div class="gv-item"><span class="lop-tag">4C</span><span class="gv-name">Trình Quốc Sĩ</span></div>
             <div class="gv-item"><span class="lop-tag">4D</span><span class="gv-name">Nguyễn Thị Bảo Trang</span></div>
@@ -251,7 +262,7 @@
             <div class="khoi-header k5">📁 KHỐI 5</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">5A</span><span class="gv-name">Vương Văn Thanh <small class="text-success">(Khối trưởng)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">5A</span><span class="gv-name">Vương Văn Thanh <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">5B</span><span class="gv-name">Trần Thị Quí</span></div>
             <div class="gv-item"><span class="lop-tag">5C</span><span class="gv-name">Nguyễn Ngọc Khải</span></div>
             <div class="gv-item"><span class="lop-tag">5D</span><span class="gv-name">Ngô Văn Thơm</span></div>
@@ -294,7 +305,7 @@
   </div>
 
   <script>
-    // ===== ĐỒNG HỒ + NGÀY THÁNG TỰ CHẠY =====
+    // ===== ĐỒNG HỒ TỰ CHẠY =====
     function updateClock() {
       const now = new Date();
       const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
