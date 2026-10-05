@@ -20,57 +20,24 @@
     .header-top {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       color: white;
-      padding: 15px 20px;
+      padding: 20px 30px;
       border-radius: 12px 12px 0 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 15px;
     }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .logo-img {
-      height: 70px;
-      border-radius: 8px;
-    }
-    .school-name {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 0;
-    }
-    .school-slogan {
-      font-size: 15px;
-      font-style: italic;
-      opacity: 0.9;
-      margin: 4px 0 0;
-    }
-    .header-center {
-      text-align: center;
-      flex: 1;
-    }
-    .page-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin: 0;
-    }
-    .datetime-box {
-      text-align: right;
-      min-width: 160px;
-    }
-    .date-part { font-size: 15px; }
-    .time-part {
-      font-size: 26px;
-      font-weight: bold;
-      color: #ffd700;
-    }
+    .school-info h1 { font-size: 28px; font-weight: bold; margin: 0; }
+    .school-info p { margin: 4px 0; font-style: italic; opacity: 0.9; }
+    .page-title { text-align: center; flex: 1; }
+    .page-title h2 { font-size: 32px; font-weight: bold; margin: 0; }
+    .datetime-box { text-align: right; min-width: 180px; }
+    .date-part { font-size: 16px; }
+    .time-part { font-size: 28px; font-weight: bold; color: #ffd700; }
     .khoi-card {
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       height: 100%;
       border: 4px solid;
     }
@@ -80,11 +47,11 @@
     .khoi-card.k4 { border-color: var(--khoi4); }
     .khoi-card.k5 { border-color: var(--khoi5); }
     .khoi-header {
-      padding: 10px;
+      padding: 12px;
       color: white;
       font-weight: bold;
       text-align: center;
-      font-size: 18px;
+      font-size: 20px;
     }
     .khoi-header.k1 { background: var(--khoi1); }
     .khoi-header.k2 { background: var(--khoi2); }
@@ -92,18 +59,18 @@
     .khoi-header.k4 { background: var(--khoi4); }
     .khoi-header.k5 { background: var(--khoi5); }
     .gv-item {
-      padding: 10px 12px;
+      padding: 12px 15px;
       border-bottom: 1px solid #eee;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .lop-tag {
-      padding: 4px 12px;
-      border-radius: 4px;
+      padding: 6px 14px;
+      border-radius: 6px;
       color: white;
       font-weight: bold;
-      min-width: 70px;
+      min-width: 80px;
       text-align: center;
     }
     .k1 .lop-tag { background: var(--khoi1); }
@@ -111,59 +78,52 @@
     .k3 .lop-tag { background: var(--khoi3); }
     .k4 .lop-tag { background: var(--khoi4); }
     .k5 .lop-tag { background: var(--khoi5); }
-    .gv-name { flex: 1; font-size: 15px; }
-    .truong-khoi { color: #28a745; font-size: 13px; }
+    .gv-name { flex: 1; font-size: 16px; }
+    .truong-khoi { color: #28a745; font-size: 14px; }
     .stats-bar {
       background: #e9ecef;
-      border-radius: 8px;
-      padding: 15px 20px;
-      margin: 20px 0;
+      border-radius: 10px;
+      padding: 18px 25px;
+      margin: 25px 0;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
     }
     .btn-custom {
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 12px 25px;
+      border-radius: 8px;
       font-weight: bold;
       border: none;
       text-decoration: none;
       display: inline-block;
+      font-size: 16px;
+      transition: 0.2s;
     }
-    .btn-custom:hover { opacity: 0.9; color: white; }
+    .btn-custom:hover { opacity: 0.9; transform: translateY(-2px); color: white; }
+    .admin-only { display: none; }
+    .admin-only.visible { display: inline-block; }
     .footer-bar {
       background: #0b5ed7;
       color: white;
-      padding: 15px 20px;
+      padding: 18px 25px;
       border-radius: 0 0 12px 12px;
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+      margin-top: 25px;
     }
-    .admin-only { display: none; }
-    .admin-only.visible { display: inline-block; }
   </style>
 </head>
 <body>
   <div class="container py-4">
     <!-- HEADER -->
     <div class="header-top">
-      <div class="header-left">
-        <img src="https://drive.google.com/uc?export=view&id=12HVKo7ZPDijs7wpt42N3XYj3ISEMXPl7" 
-             alt="Logo" class="logo-img" onerror="this.style.display='none'">
-        <div>
-          <h5 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
-          <p class="school-slogan">"Tất cả vì học sinh thân yêu"</p>
-          <p class="mb-0">Năm học: 2026-2027</p>
-        </div>
+      <div class="school-info">
+        <h1>TRƯỜNG TIỂU HỌC LẠC QUỚI</h1>
+        <p>"Tất cả vì học sinh thân yêu"</p>
+        <p>Năm học: 2026-2027</p>
       </div>
-      <div class="header-center">
-        <h2 class="page-title">GIÁO VIÊN CÁC KHỐI</h2>
+      <div class="page-title">
+        <h2>GIÁO VIÊN CÁC KHỐI</h2>
       </div>
       <div class="datetime-box">
         <div class="date-part" id="dateDisplay"></div>
@@ -171,8 +131,8 @@
       </div>
     </div>
 
-    <!-- BẢNG KHỐI GIÁO VIÊN → ĐÃ ĐIỀN DỮ LIỆU CỐ ĐỊNH -->
-    <div class="row g-3 mt-3">
+    <!-- DANH SÁCH KHỐI GIÁO VIÊN -->
+    <div class="row g-4 mt-2">
       <!-- KHỐI 1 -->
       <div class="col-md-6 col-lg">
         <div class="khoi-card k1">
@@ -249,7 +209,7 @@
     <!-- THỐNG KÊ -->
     <div class="stats-bar">
       <h5 class="mb-0">📊 TỔNG SỐ GIÁO VIÊN: <strong>30</strong></h5>
-      <div class="d-flex gap-3">
+      <div class="d-flex gap-3 flex-wrap">
         <span><strong style="color: var(--khoi1)">●</strong> Khối 1: 5</span>
         <span><strong style="color: var(--khoi2)">●</strong> Khối 2: 5</span>
         <span><strong style="color: var(--khoi3)">●</strong> Khối 3: 5</span>
@@ -258,17 +218,18 @@
       </div>
     </div>
 
-    <!-- NÚT CHỨC NĂNG -->
-    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
-      <a href="index.html" class="btn btn-warning btn-custom">🔄 Tải lại dữ liệu</a>
-      <a href="dangnhap_giaovien.html" class="btn btn-primary btn-custom">👤 Đăng nhập (Giáo viên)</a>
-      <a href="dangnhap_admin.html" class="btn btn-dark btn-custom admin-only" id="nutCapNhat">⚙️ Cập nhật Dữ liệu (Admin)</a>
+    <!-- NÚT CHỨC NĂNG → ĐỦ TẤT CẢ NÚT -->
+    <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+      <a href="index.html" class="btn-custom" style="background: #ffc107; color: #000;">🔄 Tải lại dữ liệu</a>
+      <a href="dangnhap_giaovien.html" class="btn-custom" style="background: #0d6efd; color: white;">👤 Đăng nhập (Giáo viên)</a>
+      <a href="dangnhap_admin.html" class="btn-custom" style="background: #212529; color: white;">🔐 Đăng nhập (Admin)</a>
+      <a href="quanly.html" class="btn-custom admin-only" id="nutCapNhat" style="background: #198754; color: white;">⚙️ Cập nhật Dữ liệu (Admin)</a>
     </div>
 
     <!-- FOOTER -->
-    <div class="footer-bar mt-4">
-      <p class="mb-0 fst-italic">📢 Thông điệp: Mỗi thầy cô là một tấm gương đạo đức, tự học và sáng tạo.</p>
-      <p class="mb-0 fw-bold">KỸ CƯƠNG – TÌNH THƯƠNG – TRÁCH NHIỆM</p>
+    <div class="footer-bar mt-5">
+      <p class="mb-2 fst-italic fs-6">📢 Thông điệp: Mỗi thầy cô là một tấm gương đạo đức, tự học và sáng tạo.</p>
+      <p class="mb-0 fw-bold fs-5">KỸ CƯƠNG – TÌNH THƯƠNG – TRÁCH NHIỆM</p>
     </div>
   </div>
 
@@ -285,12 +246,11 @@
     updateClock();
     setInterval(updateClock, 1000);
 
-    // Hiện nút Admin khi đã đăng nhập
+    // Hiện nút "Cập nhật Dữ liệu" khi đã đăng nhập với quyền Admin
     const thongTinDangNhap = JSON.parse(localStorage.getItem("dangNhap") || "null");
     const nutCapNhat = document.getElementById("nutCapNhat");
     if (thongTinDangNhap && thongTinDangNhap.laAdmin) {
       nutCapNhat.classList.add("visible");
-      nutCapNhat.href = "quanly.html";
     }
   </script>
 </body>
