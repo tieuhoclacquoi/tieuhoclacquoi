@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Cá Nhân - Trường Tiểu học Lạc Quới</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {background: #f8f9fa; font-family: "Times New Roman", sans-serif; padding: 20px;}
+    .container {max-width: 800px; margin: 0 auto;}
+    .card {border: none; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 25px; overflow: hidden;}
+    .card-header {background: linear-gradient(135deg, #0052cc, #0066ff); color: white; font-weight: bold; padding: 15px 20px;}
+    .card-body {padding: 25px;}
+    .info-row {display: flex; padding: 10px 0; border-bottom: 1px solid #eee;}
+    .info-label {width: 180px; font-weight: 600; color: #444;}
+    .info-value {flex: 1; color: #222;}
+    .info-value.khoa {color: #666; background: #f0f0f0; padding: 2px 8px; border-radius: 4px; display: inline-block;}
+    .btn-sua {background: #0052cc; color: white; border: none; padding: 8px 16px; border-radius: 6px;}
+    .btn-sua:hover {background: #0040aa; color: white;}
+    .btn-dmk {background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold;}
+    .btn-dmk:hover {background: #218838; color: white;}
+    .btn-thoat {background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 6px;}
+    .form-control {padding: 8px 12px; border-radius: 6px; border: 1px solid #ced4da;}
+    .alert {display: none; margin-top: 15px;}
+    .sua-form {display: none; margin-top: 10px; padding: 15px; background: #f8f9fa; border-radius: 8px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 id="tenTruong">TRƯỜNG TIỂU HỌC LẠC QUỚI</h2>
+      <p class="text-muted">Thông tin cá nhân — <span id="hoTen"></span></p>
+    </div>
+
+    <!-- Thông tin do Admin đặt -->
+    <div class="card">
+      <div class="card-header">🔒 Thông tin do Quản trị đặt</div>
+      <div class="card-body">
+        <div class="info-row"><span class="info-label">Mã giáo viên:</span><span class="info-value khoa" id="f_maGV"></span></div>
+        <div class="info-row"><span class="info-label">Họ và tên:</span><span class="info-value khoa" id="f_hoTen"></span></div>
+        <div class="info-row"><span class="info-label">Tên đăng nhập:</span><span class="info-value khoa" id="f_user"></span></div>
+        <div class="info-row"><span class="info-label">Khối phụ trách:</span><span class="info-value khoa" id="f_khoi"></span></div>
+        <div class="info-row"><span class="info-label">Chức vụ:</span><span class="info-value khoa" id="f_chucvu"></span></div>
+        <div class="info-row"><span class="info-label">Lớp phụ trách:</span><span class="info-value khoa" id="f_lop"></span></div>
+        <p class="text-muted mt-2" style="font-size:14px;">* Các thông tin trên do Quản trị quản lý, không thể tự sửa</p>
+      </div>
+    </div>
+
+    <!-- Thông tin cá nhân tự cập nhật -->
+    <div class="card">
+      <div class="card-header">👤 Thông tin cá nhân (Tự cập nhật)</div>
+      <div class="card-body">
+        <div class="info-row">
+          <span class="info-label">Ngày sinh:</span>
+          <span class="info-value" id="f_ngaysinh"></span>
+          <button class="btn-sua ms-3" onclick="hienSua('ngaysinh')">Sửa</button>
+        </div>
+        <div class="sua-form" id="form_ngaysinh">
+          <input type="date" id="inp_ngaysinh" class="form-control mb-2">
+          <button class="btn btn-success" onclick="luuThongTin('ngaysinh')">Lưu</button>
+          <button class="btn btn-secondary" onclick="dongSua('ngaysinh')">Đóng</button>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Số CCCD:</span>
+          <span class="info-value" id="f_cccd"></span>
+          <button class="btn-sua ms-3" onclick="hienSua('cccd')">Sửa</button>
+        </div>
+        <div class="sua-form" id="form_cccd">
+          <input type="text" id="inp_cccd" class="form-control mb-2" placeholder="Nhập số CCCD">
+          <button class="btn btn-success" onclick="luuThongTin('cccd')">Lưu</button>
+          <button class="btn btn-secondary" onclick="dongSua('cccd')">Đóng</button>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Ngày cấp:</span>
+          <span class="info-value" id="f_ngaycap"></span>
+          <button class="btn-sua ms-3" onclick="hienSua('ngaycap')">Sửa</button>
+        </div>
+        <div class="sua-form" id="form_ngaycap">
+          <input type="date" id="inp_ngaycap" class="form-control mb-2">
+          <button class="btn btn-success" onclick="luuThongTin('ngaycap')">Lưu</button>
+          <button class="btn btn-secondary" onclick="dongSua('ngaycap')">Đóng</button>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Nơi cấp:</span>
+          <span class="info-value" id="f_noicap"></span>
+          <button class="btn-sua ms-3" onclick="hienSua('noicap')">Sửa</button>
+        </div>
+        <div class="sua-form" id="form_noicap">
+          <input type="text" id="inp_noicap" class="form-control mb-2" placeholder="Nơi cấp CCCD">
+          <button class="btn btn-success" onclick="luuThongTin('noicap')">Lưu</button>
+          <button class="btn btn-secondary" onclick="dongSua('noicap')">Đóng</button>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Email chính:</span>
+          <span class="info-value" id="f_email"></span>
+          <button class="btn-sua ms-3" onclick="hienSua('email')">Sửa</button>
+        </div>
+        <div class="sua-form" id="form_email">
+          <input type="email" id="inp_email" class="form-control mb-2" placeholder="Email chính">
+          <button class="btn btn-success" onclick="luuThongTin('email')">Lưu</button>
+          <button class="btn btn-secondary" onclick="dongSua('email')">Đóng</button>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Số điện thoại:</span>
+          <span class="info-value" id="f_dienthoai"></span>
+          <button class="btn-sua ms-3" onclick="hienSua('dienthoai')">Sửa</button>
+        </div>
+        <div class="sua-form" id="form_dienthoai">
+          <input type="tel" id="inp_dienthoai" class="form-control mb-2" placeholder="Số điện thoại">
+          <button class="btn btn-success" onclick="luuThongTin('dienthoai')">Lưu</button>
+          <button class="btn btn-secondary" onclick="dongSua('dienthoai')">Đóng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Đổi mật khẩu -->
+    <div class="card">
+      <div class="card-header">🔑 Đổi mật khẩu</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Mật khẩu cũ</label>
+          <input type="password" id="mkCu" class="form-control" placeholder="Nhập mật khẩu hiện tại">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Mật khẩu mới</label>
+          <input type="password" id="mkMoi" class="form-control" placeholder="Nhập mật khẩu mới">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nhập lại mật khẩu mới</label>
+          <input type="password" id="mkMoi2" class="form-control" placeholder="Nhập lại mật khẩu mới">
+        </div>
+        <button class="btn-dmk" onclick="doiMatKhau()">Đổi Mật Khẩu</button>
+        <div class="alert alert-success" id="mkThanhCong">✅ Đổi mật khẩu thành công!</div>
+        <div class="alert alert-danger" id="mkLoi">❌ Mật khẩu cũ không đúng hoặc không khớp!</div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <a href="index.html" class="btn btn-secondary">← Quay lại Trang chủ</a>
+      <button class="btn-thoat" onclick="dangXuat()">Đăng Xuất</button>
+    </div>
+  </div>
+
+  <script src="du_lieu_chung.js"></script>
+  <script>
+    const dangNhap = JSON.parse(localStorage.getItem("dangNhap") || "null");
+    if (!dangNhap || dangNhap.laAdmin) {
+      alert("Vui lòng đăng nhập với tài khoản Giáo viên!");
+      window.location.href = "dangnhap_giaovien.html";
+    }
+
+    let gvHienTai = DANH_SACH_GIAO_VIEN.find(g => g.tenDangNhap === dangNhap.user);
+    if (!gvHienTai) {
+      alert("Không tìm thấy thông tin!");
+      window.location.href = "dangnhap_giaovien.html";
+    }
+
+    document.getElementById("tenTruong").textContent = CAIDAT_HE_THONG.tenTruong;
+    document.getElementById("hoTen").textContent = gvHienTai.hoTen;
+    
+    function hienThiThongTin() {
+      document.getElementById("f_maGV").textContent = gvHienTai.maGV;
+      document.getElementById("f_hoTen").textContent = gvHienTai.hoTen;
+      document.getElementById("f_user").textContent = gvHienTai.tenDangNhap;
+      document.getElementById("f_khoi").textContent = gvHienTai.khoiPhuTrach;
+      document.getElementById("f_chucvu").textContent = gvHienTai.chucVu;
+      document.getElementById("f_lop").textContent = gvHienTai.lopPhuTrach || "Chưa phân công";
+      
+      const tt = gvHienTai.thongTinCaNhan;
+      document.getElementById("f_ngaysinh").textContent = tt.ngaySinh || "Chưa cập nhật";
+      document.getElementById("f_cccd").textContent = tt.cccd || "Chưa cập nhật";
+      document.getElementById("f_ngaycap").textContent = tt.ngayCapCCCD || "Chưa cập nhật";
+      document.getElementById("f_noicap").textContent = tt.noiCapCCCD || "Chưa cập nhật";
+      document.getElementById("f_email").textContent = tt.emailChinh || "Chưa cập nhật";
+      document.getElementById("f_dienthoai").textContent = tt.dienThoai || "Chưa cập nhật";
+    }
+    hienThiThongTin();
+
+    function hienSua(trang) {
+      document.querySelectorAll(".sua-form").forEach(f=>f.style.display="none");
+      document.getElementById(`form_${trang}`).style.display = "block";
+      const gt = {
+        ngaysinh: gvHienTai.thongTinCaNhan.ngaySinh,
+        cccd: gvHienTai.thongTinCaNhan.cccd,
+        ngaycap: gvHienTai.thongTinCaNhan.ngayCapCCCD,
+        noicap: gvHienTai.thongTinCaNhan.noiCapCCCD,
+        email: gvHienTai.thongTinCaNhan.emailChinh,
+        dienthoai: gvHienTai.thongTinCaNhan.dienThoai
+      };
+      if(document.getElementById(`inp_${trang}`)) document.getElementById(`inp_${trang}`).value = gt[trang] || "";
+    }
+    function dongSua(trang) {
+      document.getElementById(`form_${trang}`).style.display = "none";
+    }
+    function luuThongTin(trang) {
+      const gt = document.getElementById(`inp_${trang}`).value.trim();
+      const map = {
+        ngaysinh: "ngaySinh", cccd: "cccd", ngaycap: "ngayCapCCCD",
+        noicap: "noiCapCCCD", email: "emailChinh", dienthoai: "dienThoai"
+      };
+      gvHienTai.thongTinCaNhan[map[trang]] = gt;
+      luuDuLieu();
+      hienThiThongTin();
+      dongSua(trang);
+      ghiNhatKy(gvHienTai.hoTen, "Cập nhật thông tin cá nhân", "Trường: " + trang);
+      alert("Đã lưu!");
+    }
+
+    function doiMatKhau() {
+      const cu = document.getElementById("mkCu").value;
+      const moi = document.getElementById("mkMoi").value;
+      const moi2 = document.getElementById("mkMoi2").value;
+      document.querySelectorAll(".alert").forEach(a=>a.style.display="none");
+      
+      if (gvHienTai.matKhau !== cu || moi !== moi2 || !moi) {
+        document.getElementById("mkLoi").style.display = "block";
+        return;
+      }
+      gvHienTai.matKhau = moi;
+      luuDuLieu();
+      document.getElementById("mkThanhCong").style.display = "block";
+      ghiNhatKy(gvHienTai.hoTen, "Đổi mật khẩu", "Thành công");
+      document.getElementById("mkCu").value = "";
+      document.getElementById("mkMoi").value = "";
+      document.getElementById("mkMoi2").value = "";
+    }
+
+    function dangXuat() {
+      localStorage.removeItem("dangNhap");
+      window.location.href = "dangnhap_giaovien.html";
+    }
+  </script>
+</body>
+</html>
