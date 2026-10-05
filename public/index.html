@@ -1,162 +1,3 @@
-
-Tạo tài khoản: https://github.com/tieuhoclacquoi
-Kho tạo xong, tên kho hiện là tieuhoclacquoi — mình cần tạo đúng 3 file code như sau:
--------------------------------------------------------------------------
-📄 File thứ nhất — package.json
-Ô tên tệp: gõ chính xác: package.json
-Khung soạn thảo bên dưới → dán toàn bộ nội dung này:
-
-{
-  "name": "hscm-thlq",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "express": "^4.19.2"
-  }
-}
-
-------------------------------------------------------------------
-📄 File thứ hai — index.js
-Nhấn lại "Thêm tệp" → "Tạo tệp mới"
-Tên tệp: index.js
-Dán nội dung:
-
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(express.json());
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
-
-app.listen(PORT, () => {
-  console.log(`Chạy tại cổng ${PORT}`);
-});
-
-----------------------------------------------------------------
-📄 File thứ ba — Giao diện public/index.html ⚠️ Gõ chính xác: public/index.html
-Dán nội dung:
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hồ sơ Chuyên môn Giáo viên - TH Lạc Quới</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-  <div class="container mt-5">
-    <div class="card shadow">
-      <div class="card-header bg-primary text-white text-center">
-        <h3>📋 HỒ SƠ CHUYÊN MÔN GIÁO VIÊN</h3>
-        <p class="mb-0">Trường Tiểu học Lạc Quới</p>
-      </div>
-      <div class="card-body text-center">
-        <h4>Chào mừng bạn!</h4>
-        <p class="lead">Hệ thống đang được xây dựng...</p>
-        <hr>
-        <p class="text-muted">Địa chỉ: Ấp Thới Hòa, Xã Lạc Quới, Huyện Vũng Liêm, Tỉnh Vĩnh Long</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-
---------------------------------------------------------------------------------------
-
-Kiểm tra sau khi tạo xong 3 file
-Trang sẽ hiển thị:
-package.json
-index.js
-Thư mục public/ → có file index.html bên trong
-→ Như vậy là đúng! Tiếp tục kết nối với Render.
-
-
-================================================================
-
-Kết nối với Render để trang web hiện ra 
-================================================================
-
-Bước 1 — Mở trang Render
-Mở tab mới trong trình duyệt
-Gõ địa chỉ: https://dashboard.render.com
-Nhấn Đăng nhập → chọn nút Tiếp tục với GitHub → cho phép kết nối tài khoản của bạn 
-
----------------------------------------------------------
-
-Bước 2 — Tạo Dịch vụ Web
-Ở góc trên bên phải → nhấn nút + New → chọn Web Service
-Phần Kết nối kho GitHub:
-Tìm kho có tên tieuhoclacquoi → nhấn nút Connect / Kết nối
-Điền thông tin chính xác như sau:
-
-Ô nhập				Gõ nội dung
-Name /Tên 			hscm-thlq
-Region /Vùng 			Chọn Singapore (gần nhất → nhanh nhất)
-Branch /Nhánh 			chủ yếu hoặc main
-Build Command / Lệnh xây dựng	npm install
-Start Command / Lệnh khởi động	node index.js
-Instance Type / Loại máy	⭐ Free (Miễn phí)
-
---------------------------------------------------------------
-Bước 3 — Chờ và Kiểm tra
-Render sẽ tự động cài đặt và chạy trang của bạn → mất khoảng 2–5 phút
-Khi thấy trạng thái chuyển sang 🟢 Live → Thành công! 🎉
-Sẽ có link dạng: https://hscm-thlq.onrender.com → nhấn vào xem trang của bạn 
-
-
-=========================================================================
-
-
-Dự án trường học: ✅ Nhấn Other
-
-Dùng cho nhiều người: ✅ Nhấn 11-50
-
-================================================================
-
-Bước 1 — Chọn kho code
-Nhấn vào dòng hiển thị: tieuhoclacquoi / tieuhoclacquoi
-
-Bước 2 — Điền thông tin cấu hình
-Ô nhập				Nội dung
-Name				hscm-thlq
-Region				Singapore
-Branch				chủ yếu hoặc main
-Build Command			npm install
-Start Command			node index.js
-Instance Type			⭐ Free
-
-Bước 3 — Tạo dịch vụ
-Kéo xuống dưới cùng → nhấn nút Create Web Service ✅
-→ Render sẽ tự động triển khai trang web của bạn ⏳
-
-Bước 4 — Chờ kết quả
-Trạng thái chuyển thành Building → đang cài đặt
-Sau 2–5 phút → hiện 🟢 Live → Thành công! 🎉
-Nhấn link ở trên cùng dạng https://hscm-thlq.onrender.com → xem trang của bạn ✅
-
-Ô nhập		Giá trị trên màn hình		Sửa thành		Lý do
-Name		tieuhoclacquoi			hscm-thlq		Link sẽ là hscm-thlq.onrender.com — ngắn gọn, dễ nhớ
-Language	Node	✅ Giữ nguyên		Đúng rồi! 		Dùng Node.js
-Branch		main	✅ Giữ nguyên		Đúng nhánh chính
-Region		Oregon (US West)		🔄 Đổi thành Singapore	Gần Việt Nam → tốc độ nhanh hơn nhiều
-Root Directory	Trống	✅ Để trống		Không cần điền
-Build Command	yarn install			🔄 Đổi thành npm install	Code mình viết dùng npm, không dùng yarn
-Start Command	node index.js	✅ Giữ nguyên	Đúng hoàn toàn!
-Instance Type	(kéo xuống chọn)		⭐ Free	Miễn phí, không mất tiền
-
-===============================================================================================
-
-🎯 PHẦN 1 — GIAO DIỆN BẢNG GIÁO VIÊN CÁC KHỐI
-Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng code sau:
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -176,43 +17,73 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
       background-color: #f0f4f8;
       font-family: "Times New Roman", sans-serif;
     }
+
+    /* === HEADER CHÍNH === */
     .header-top {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       color: white;
-      padding: 20px 25px;
+      padding: 15px 20px;
       border-radius: 12px 12px 0 0;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .header-left {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      flex-shrink: 0;
     }
-    .header-left h4 { margin: 0; font-size: 22px; font-weight: bold; }
-    .header-left p { margin: 4px 0 0; font-style: italic; }
-    .header-center { text-align: center; }
-    .header-center h2 { margin: 0; font-weight: bold; }
-
-    /* === PHẦN NGÀY & ĐỒNG HỒ MỚI === */
-    .datetime-box {
+    .logo-img {
+      height: 70px;
+      margin-right: 15px;
+      border-radius: 8px;
+    }
+    .school-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .school-slogan {
+      font-size: 14px;
+      margin: 4px 0 0 0;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .header-center {
       text-align: center;
-      min-width: 180px;
+      flex: 1;
+      padding: 0 15px;
     }
-    .date-part {
-      font-size: 16px;
-      color: #ffffff;
-      margin-bottom: 6px;
-    }
-    .time-part {
+    .page-title {
       font-size: 28px;
       font-weight: bold;
-      color: #ff3366; /* Màu hồng đỏ → đổi thành #ff0000 nếu muốn đỏ thuần */
-      letter-spacing: 1px;
+      margin: 0;
+    }
+    .datetime-box {
+      text-align: right;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .date-part {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .time-part {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ff3366;
     }
 
+    /* === KHỐI === */
     .khoi-card {
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       height: 100%;
-      border: 4px solid; /* Viền đậm */
+      border: 4px solid;
     }
     .khoi-card.k1 { border-color: #0b5ed7; }
     .khoi-card.k2 { border-color: #198754; }
@@ -258,7 +129,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
     .k4 .lop-tag { background-color: var(--khoi4); }
     .k5 .lop-tag { background-color: var(--khoi5); }
     .gv-name { flex: 1; font-size: 15px; }
-    .text-success { color: #28a745; font-size: 13px; }
+    .truong-khoi { color: #28a745; font-size: 13px; }
 
     .stats-bar {
       background-color: #e9ecef;
@@ -275,6 +146,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
       border-radius: 6px;
       font-weight: bold;
       border: none;
+      white-space: nowrap;
     }
     .footer-bar {
       background-color: #0b5ed7;
@@ -283,8 +155,10 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
       border-radius: 0 0 12px 12px;
       margin-top: 20px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
     }
     .khoi-link { text-decoration: none; color: inherit; display: block; }
   </style>
@@ -295,16 +169,21 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
     <!-- HEADER CHÍNH -->
     <div class="header-top">
       <div class="header-left">
-        <h4>TRƯỜNG TIỂU HỌC LẠC QUỚI</h4>
-        <p>"Tất cả vì học sinh thân yêu"</p>
+        <img src="https://drive.google.com/uc?export=view&id=12HVKo7ZPDijs7wpt42N3XYj3ISEMXPl7" 
+             alt="Logo Trường Tiểu học Lạc Quới" class="logo-img">
+        <div>
+          <h5 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
+          <p class="school-slogan">"Tất cả vì học sinh thân yêu"</p>
+        </div>
       </div>
+
       <div class="header-center">
-        <h2>GIÁO VIÊN CÁC KHỐI</h2>
+        <h2 class="page-title">GIÁO VIÊN CÁC KHỐI</h2>
       </div>
-      <!-- PHẦN NGÀY + ĐỒNG HỒ ĐÃ SỬA -->
+
       <div class="datetime-box">
         <div class="date-part" id="dateDisplay">Thứ Hai, 05/10/2026</div>
-        <div class="time-part" id="timeDisplay">21:37:58</div>
+        <div class="time-part" id="timeDisplay">22:56:00</div>
       </div>
     </div>
 
@@ -318,7 +197,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
             <div class="khoi-header k1">📁 KHỐI 1</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">1A</span><span class="gv-name">Trần Phan Diễm Trang <small class="text-success">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">1A</span><span class="gv-name">Trần Phan Diễm Trang <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">1B</span><span class="gv-name">Nguyễn Thị Thanh Thảo</span></div>
             <div class="gv-item"><span class="lop-tag">1C</span><span class="gv-name">Lê Thị Yến Thiên</span></div>
             <div class="gv-item"><span class="lop-tag">GVC_TD1</span><span class="gv-name">Nguyễn Văn Sang</span></div>
@@ -334,7 +213,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
             <div class="khoi-header k2">📁 KHỐI 2</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">2A</span><span class="gv-name">Trần Thị Ngọc Thơ <small class="text-success">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">2A</span><span class="gv-name">Trần Thị Ngọc Thơ <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">2B</span><span class="gv-name">Lê Thị Thúy Loan</span></div>
             <div class="gv-item"><span class="lop-tag">2C</span><span class="gv-name">Lê Thị Tuấn Kha</span></div>
             <div class="gv-item"><span class="lop-tag">GVC_MT</span><span class="gv-name">Trần Quốc Đạt</span></div>
@@ -350,7 +229,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
             <div class="khoi-header k3">📁 KHỐI 3</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">3A</span><span class="gv-name">Thạch Tuyết Xuân <small class="text-success">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">3A</span><span class="gv-name">Thạch Tuyết Xuân <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">3B</span><span class="gv-name">Trần Thị Mỹ Linh</span></div>
             <div class="gv-item"><span class="lop-tag">3C</span><span class="gv-name">Trình Thị Bích Phượng</span></div>
             <div class="gv-item"><span class="lop-tag">3D</span><span class="gv-name">Phan Thị Kim Loan</span></div>
@@ -366,7 +245,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
             <div class="khoi-header k4">📁 KHỐI 4</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">4A</span><span class="gv-name">Lưu Thị Cẩm Loan <small class="text-success">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">4A</span><span class="gv-name">Lưu Thị Cẩm Loan <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">4B</span><span class="gv-name">Mai Thị Thảo Ngân</span></div>
             <div class="gv-item"><span class="lop-tag">4C</span><span class="gv-name">Trình Quốc Sĩ</span></div>
             <div class="gv-item"><span class="lop-tag">4D</span><span class="gv-name">Nguyễn Thị Bảo Trang</span></div>
@@ -383,7 +262,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
             <div class="khoi-header k5">📁 KHỐI 5</div>
           </a>
           <div>
-            <div class="gv-item"><span class="lop-tag">5A</span><span class="gv-name">Vương Văn Thanh <small class="text-success">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">5A</span><span class="gv-name">Vương Văn Thanh <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">5B</span><span class="gv-name">Trần Thị Quí</span></div>
             <div class="gv-item"><span class="lop-tag">5C</span><span class="gv-name">Nguyễn Ngọc Khải</span></div>
             <div class="gv-item"><span class="lop-tag">5D</span><span class="gv-name">Ngô Văn Thơm</span></div>
@@ -409,12 +288,13 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
     <!-- NÚT CHỨC NĂNG -->
     <div class="d-flex flex-wrap gap-2 justify-content-center">
       <button class="btn btn-warning btn-custom">🔄 Tải lại dữ liệu</button>
-      <button class="btn btn-primary btn-custom" style="background-color: var(--khoi1);">HSSS KHỐI 1</button>
-      <button class="btn btn-success btn-custom" style="background-color: var(--khoi2);">HSSS KHỐI 2</button>
-      <button class="btn btn-custom" style="background-color: var(--khoi3); color:white;">HSSS KHỐI 3</button>
-      <button class="btn btn-custom" style="background-color: var(--khoi4); color:white;">HSSS KHỐI 4</button>
-      <button class="btn btn-info btn-custom" style="background-color: var(--khoi5); color:#000;">HSSS KHỐI 5</button>
-      <button class="btn btn-success btn-custom">⚙️ Cập nhật Giáo viên</button>
+      <button class="btn btn-primary btn-custom" style="background-color: var(--khoi1);">📁KHỐI 1</button>
+      <button class="btn btn-success btn-custom" style="background-color: var(--khoi2);">📁KHỐI 2</button>
+      <button class="btn btn-custom" style="background-color: var(--khoi3); color:white;">📁KHỐI 3</button>
+      <button class="btn btn-custom" style="background-color: var(--khoi4); color:white;">📁KHỐI 4</button>
+      <button class="btn btn-info btn-custom" style="background-color: var(--khoi5); color:#000;">📁KHỐI 5</button>
+      <button class="btn btn-success btn-custom">⚙️ Cập nhật dữ liệu</button>
+      <a href="dangnhap.html" class="btn btn-primary btn-custom">🔐 Đăng nhập</a>
     </div>
 
     <!-- FOOTER -->
@@ -425,7 +305,7 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
   </div>
 
   <script>
-    // ===== ĐỒNG HỒ + NGÀY THÁNG TỰ CHẠY =====
+    // ===== ĐỒNG HỒ TỰ CHẠY =====
     function updateClock() {
       const now = new Date();
       const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
@@ -460,45 +340,3 @@ Tạo file public/index.html trên GitHub → thay toàn bộ nội dung bằng 
   </script>
 </body>
 </html>
-
-
-
---------------------------------------------------------------------------------
-
-✅ Cách triển khai
-Vào GitHub → mở file public/index.html → nhấn biểu tượng bút chì ✏️
-Xóa toàn bộ nội dung cũ → dán code trên vào
-Kéo xuống → Xác nhận thay đổi
-Mở lại trang hscm-thlq.onrender.com → nhấn Tải lại trang (F5)
-→ Sẽ thấy giao diện giống hệt như hình mẫu bạn gửi! 🎉
-
--------------------------------------------------------------
-
-📌 Điền link Drive 5 khối
-const driveLinks = {
-  khoi1: "", // Dán link thư mục KHỐI 1 vào giữa dấu ngoặc
-  khoi2: "",
-  khoi3: "",
-  khoi4: "",
-  khoi5: ""
-};
-
-===========================================================================================
-
-
-
-🌸 Hồng nhạt		background-color: #f8d7da; color: #721c24;	Nền hồng nhạt, chữ đỏ đậm
-
-🍃 Xanh lá nhạt		background-color: #d4edda; color: #155724;	Nền xanh lá nhạt, chữ xanh đậm
-
-💎 Xanh dương nhạt	background-color: #cce5ff; color: #004085;	Nền xanh dương nhạt, chữ xanh đậm
-
-🌊 Xanh đậm nổi bật	background-color: #0066cc; color: #ffffff;	Nền xanh đậm, chữ trắng
-
-🧡 Cam nhạt		background-color: #ffe5d0; color: #854d00;	Nền cam nhạt, chữ nâu đỏ
-
-
-
-
-
-
