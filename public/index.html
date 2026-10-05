@@ -17,44 +17,40 @@
       background-color: #f0f4f8;
       font-family: "Times New Roman", sans-serif;
     }
-    /* === HEADER CHÍNH === */
     .header-top {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       color: white;
       padding: 15px 20px;
       border-radius: 12px 12px 0 0;
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       gap: 15px;
     }
     .header-left {
       display: flex;
       align-items: center;
-      flex-shrink: 0;
+      gap: 15px;
     }
     .logo-img {
       height: 70px;
-      margin-right: 15px;
       border-radius: 8px;
     }
     .school-name {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: bold;
       margin: 0;
-      line-height: 1.3;
     }
     .school-slogan {
-      font-size: 14px;
-      margin: 4px 0 0 0;
+      font-size: 15px;
       font-style: italic;
       opacity: 0.9;
+      margin: 4px 0 0;
     }
     .header-center {
       text-align: center;
       flex: 1;
-      padding: 0 15px;
     }
     .page-title {
       font-size: 28px;
@@ -64,18 +60,13 @@
     .datetime-box {
       text-align: right;
       min-width: 160px;
-      flex-shrink: 0;
     }
-    .date-part {
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
+    .date-part { font-size: 15px; }
     .time-part {
       font-size: 26px;
       font-weight: bold;
-      color: #ff3366;
+      color: #ffd700;
     }
-    /* === KHỐI === */
     .khoi-card {
       border-radius: 8px;
       overflow: hidden;
@@ -83,28 +74,25 @@
       height: 100%;
       border: 4px solid;
     }
-    .khoi-card.k1 { border-color: #0b5ed7; }
-    .khoi-card.k2 { border-color: #198754; }
-    .khoi-card.k3 { border-color: #fd7e14; }
-    .khoi-card.k4 { border-color: #9933cc; }
-    .khoi-card.k5 { border-color: #0dcaf0; }
+    .khoi-card.k1 { border-color: var(--khoi1); }
+    .khoi-card.k2 { border-color: var(--khoi2); }
+    .khoi-card.k3 { border-color: var(--khoi3); }
+    .khoi-card.k4 { border-color: var(--khoi4); }
+    .khoi-card.k5 { border-color: var(--khoi5); }
     .khoi-header {
       padding: 10px;
       color: white;
       font-weight: bold;
       text-align: center;
       font-size: 18px;
-      cursor: pointer;
-      transition: opacity 0.2s;
     }
-    .khoi-header:hover { opacity: 0.9; }
-    .khoi-header.k1 { background-color: var(--khoi1); }
-    .khoi-header.k2 { background-color: var(--khoi2); }
-    .khoi-header.k3 { background-color: var(--khoi3); }
-    .khoi-header.k4 { background-color: var(--khoi4); }
-    .khoi-header.k5 { background-color: var(--khoi5); }
+    .khoi-header.k1 { background: var(--khoi1); }
+    .khoi-header.k2 { background: var(--khoi2); }
+    .khoi-header.k3 { background: var(--khoi3); }
+    .khoi-header.k4 { background: var(--khoi4); }
+    .khoi-header.k5 { background: var(--khoi5); }
     .gv-item {
-      padding: 8px 12px;
+      padding: 10px 12px;
       border-bottom: 1px solid #eee;
       display: flex;
       align-items: center;
@@ -117,17 +105,16 @@
       font-weight: bold;
       min-width: 70px;
       text-align: center;
-      font-size: 14px;
     }
-    .k1 .lop-tag { background-color: var(--khoi1); }
-    .k2 .lop-tag { background-color: var(--khoi2); }
-    .k3 .lop-tag { background-color: var(--khoi3); }
-    .k4 .lop-tag { background-color: var(--khoi4); }
-    .k5 .lop-tag { background-color: var(--khoi5); }
+    .k1 .lop-tag { background: var(--khoi1); }
+    .k2 .lop-tag { background: var(--khoi2); }
+    .k3 .lop-tag { background: var(--khoi3); }
+    .k4 .lop-tag { background: var(--khoi4); }
+    .k5 .lop-tag { background: var(--khoi5); }
     .gv-name { flex: 1; font-size: 15px; }
     .truong-khoi { color: #28a745; font-size: 13px; }
     .stats-bar {
-      background-color: #e9ecef;
+      background: #e9ecef;
       border-radius: 8px;
       padding: 15px 20px;
       margin: 20px 0;
@@ -135,26 +122,21 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
     }
     .btn-custom {
       padding: 10px 20px;
       border-radius: 6px;
       font-weight: bold;
       border: none;
-      white-space: nowrap;
       text-decoration: none;
       display: inline-block;
-      cursor: pointer;
     }
     .btn-custom:hover { opacity: 0.9; color: white; }
-    .btn-admin {
-      background-color: #444;
-      color: white;
-    }
     .footer-bar {
-      background-color: #0b5ed7;
+      background: #0b5ed7;
       color: white;
-      padding: 12px 20px;
+      padding: 15px 20px;
       border-radius: 0 0 12px 12px;
       margin-top: 20px;
       display: flex;
@@ -163,176 +145,153 @@
       align-items: center;
       gap: 10px;
     }
-    .khoi-link { text-decoration: none; color: inherit; display: block; }
     .admin-only { display: none; }
     .admin-only.visible { display: inline-block; }
   </style>
 </head>
 <body>
   <div class="container py-4">
-    <!-- HEADER CHÍNH -->
+    <!-- HEADER -->
     <div class="header-top">
       <div class="header-left">
         <img src="https://drive.google.com/uc?export=view&id=12HVKo7ZPDijs7wpt42N3XYj3ISEMXPl7" 
-             alt="Logo Trường" class="logo-img" onerror="this.style.display='none'">
+             alt="Logo" class="logo-img" onerror="this.style.display='none'">
         <div>
-          <h5 class="school-name" id="tenTruong">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
-          <p class="school-slogan" id="slogan">"Tất cả vì học sinh thân yêu"</p>
+          <h5 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
+          <p class="school-slogan">"Tất cả vì học sinh thân yêu"</p>
+          <p class="mb-0">Năm học: 2026-2027</p>
         </div>
       </div>
       <div class="header-center">
         <h2 class="page-title">GIÁO VIÊN CÁC KHỐI</h2>
       </div>
       <div class="datetime-box">
-        <div class="date-part" id="dateDisplay">Thứ Hai, 05/10/2026</div>
-        <div class="time-part" id="timeDisplay">22:56:00</div>
+        <div class="date-part" id="dateDisplay"></div>
+        <div class="time-part" id="timeDisplay"></div>
       </div>
     </div>
 
-    <!-- BẢNG 5 KHỐI — TỰ ĐỘNG CẬP NHẬT TỪ DỮ LIỆU -->
-    <div class="row g-3 mt-1" id="danhSachKhoi">
-      <!-- Dữ liệu tự động tạo từ du_lieu_chung.js -->
+    <!-- BẢNG KHỐI GIÁO VIÊN → ĐÃ ĐIỀN DỮ LIỆU CỐ ĐỊNH -->
+    <div class="row g-3 mt-3">
+      <!-- KHỐI 1 -->
+      <div class="col-md-6 col-lg">
+        <div class="khoi-card k1">
+          <div class="khoi-header k1">📁 KHỐI 1</div>
+          <div>
+            <div class="gv-item"><span class="lop-tag">1A</span><span class="gv-name">Trần Phan Diễm Trang <small class="truong-khoi">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">1B</span><span class="gv-name">Nguyễn Thị Thanh Thảo</span></div>
+            <div class="gv-item"><span class="lop-tag">1C</span><span class="gv-name">Lê Thị Yến Thiên</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_TD1</span><span class="gv-name">Nguyễn Văn Sang</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_TNXH</span><span class="gv-name">Ngô Ái Liên</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHỐI 2 -->
+      <div class="col-md-6 col-lg">
+        <div class="khoi-card k2">
+          <div class="khoi-header k2">📁 KHỐI 2</div>
+          <div>
+            <div class="gv-item"><span class="lop-tag">2A</span><span class="gv-name">Trần Thị Ngọc Thơ <small class="truong-khoi">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">2B</span><span class="gv-name">Lê Thị Thúy Loan</span></div>
+            <div class="gv-item"><span class="lop-tag">2C</span><span class="gv-name">Lê Thị Tuấn Kha</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_MT</span><span class="gv-name">Trần Quốc Đạt</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_DD</span><span class="gv-name">Lý Vĩnh An</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHỐI 3 -->
+      <div class="col-md-6 col-lg">
+        <div class="khoi-card k3">
+          <div class="khoi-header k3">📁 KHỐI 3</div>
+          <div>
+            <div class="gv-item"><span class="lop-tag">3A</span><span class="gv-name">Thạch Tuyết Xuân <small class="truong-khoi">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">3B</span><span class="gv-name">Trần Thị Mỹ Linh</span></div>
+            <div class="gv-item"><span class="lop-tag">3C</span><span class="gv-name">Trình Thị Bích Phượng</span></div>
+            <div class="gv-item"><span class="lop-tag">3D</span><span class="gv-name">Phan Thị Kim Loan</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_AN</span><span class="gv-name">Nguyễn Chí Tâm</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHỐI 4 -->
+      <div class="col-md-6 col-lg">
+        <div class="khoi-card k4">
+          <div class="khoi-header k4">📁 KHỐI 4</div>
+          <div>
+            <div class="gv-item"><span class="lop-tag">4A</span><span class="gv-name">Lưu Thị Cẩm Loan <small class="truong-khoi">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">4B</span><span class="gv-name">Mai Thị Thảo Ngân</span></div>
+            <div class="gv-item"><span class="lop-tag">4C</span><span class="gv-name">Trình Quốc Sĩ</span></div>
+            <div class="gv-item"><span class="lop-tag">4D</span><span class="gv-name">Nguyễn Thị Bảo Trang</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_TH</span><span class="gv-name">Lê Văn Phương</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_TA1</span><span class="gv-name">Trần Thị Thanh Ngọc</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHỐI 5 -->
+      <div class="col-md-6 col-lg">
+        <div class="khoi-card k5">
+          <div class="khoi-header k5">📁 KHỐI 5</div>
+          <div>
+            <div class="gv-item"><span class="lop-tag">5A</span><span class="gv-name">Vương Văn Thanh <small class="truong-khoi">(Trưởng khối)</small></span></div>
+            <div class="gv-item"><span class="lop-tag">5B</span><span class="gv-name">Trần Thị Quí</span></div>
+            <div class="gv-item"><span class="lop-tag">5C</span><span class="gv-name">Nguyễn Ngọc Khải</span></div>
+            <div class="gv-item"><span class="lop-tag">5D</span><span class="gv-name">Ngô Văn Thơm</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_TA2</span><span class="gv-name">Phan Thị Linh</span></div>
+            <div class="gv-item"><span class="lop-tag">GVC_TD2</span><span class="gv-name">Nguyễn Văn Ngoan</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- THỐNG KÊ -->
     <div class="stats-bar">
-      <h5 class="mb-0">📊 TỔNG SỐ GIÁO VIÊN: <strong id="tongSoGV">0</strong></h5>
-      <div class="d-flex gap-3" id="thongKeKhoi">
-        <!-- Tự động đếm số lượng từng khối -->
+      <h5 class="mb-0">📊 TỔNG SỐ GIÁO VIÊN: <strong>30</strong></h5>
+      <div class="d-flex gap-3">
+        <span><strong style="color: var(--khoi1)">●</strong> Khối 1: 5</span>
+        <span><strong style="color: var(--khoi2)">●</strong> Khối 2: 5</span>
+        <span><strong style="color: var(--khoi3)">●</strong> Khối 3: 5</span>
+        <span><strong style="color: var(--khoi4)">●</strong> Khối 4: 6</span>
+        <span><strong style="color: var(--khoi5)">●</strong> Khối 5: 6</span>
       </div>
     </div>
 
     <!-- NÚT CHỨC NĂNG -->
-    <div class="d-flex flex-wrap gap-2 justify-content-center">
+    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
       <a href="index.html" class="btn btn-warning btn-custom">🔄 Tải lại dữ liệu</a>
-      <button class="btn btn-primary btn-custom" style="background-color: var(--khoi1);">HSSS KHỐI 1</button>
-      <button class="btn btn-success btn-custom" style="background-color: var(--khoi2);">HSSS KHỐI 2</button>
-      <button class="btn btn-custom" style="background-color: var(--khoi3); color:white;">HSSS KHỐI 3</button>
-      <button class="btn btn-custom" style="background-color: var(--khoi4); color:white;">HSSS KHỐI 4</button>
-      <button class="btn btn-info btn-custom" style="background-color: var(--khoi5); color:#000;">HSSS KHỐI 5</button>
-      
-      <!-- Nút CẬP NHẬT DỮ LIỆU — CHỈ HIỆN KHI ĐĂNG NHẬP ADMIN -->
-      <a href="dangnhap_admin.html" class="btn btn-custom btn-admin admin-only" id="nutCapNhat">
-        ⚙️ Cập nhật Dữ liệu (Admin)
-      </a>
-      
       <a href="dangnhap_giaovien.html" class="btn btn-primary btn-custom">👤 Đăng nhập (Giáo viên)</a>
+      <a href="dangnhap_admin.html" class="btn btn-dark btn-custom admin-only" id="nutCapNhat">⚙️ Cập nhật Dữ liệu (Admin)</a>
     </div>
 
     <!-- FOOTER -->
-    <div class="footer-bar">
-      <p class="mb-0 fst-italic" id="thongDiep">📢 Thông điệp: Mỗi thầy cô là một tấm gương đạo đức, tự học và sáng tạo.</p>
-      <p class="mb-0 fw-bold" id="quyetNghi">KỸ CƯƠNG – TÌNH THƯƠNG – TRÁCH NHIỆM</p>
+    <div class="footer-bar mt-4">
+      <p class="mb-0 fst-italic">📢 Thông điệp: Mỗi thầy cô là một tấm gương đạo đức, tự học và sáng tạo.</p>
+      <p class="mb-0 fw-bold">KỸ CƯƠNG – TÌNH THƯƠNG – TRÁCH NHIỆM</p>
     </div>
   </div>
 
-  <script src="du_lieu_chung.js"></script>
   <script>
-    // ===== ĐỒNG HỒ TỰ CHẠY =====
+    // Đồng hồ thời gian thực
     function updateClock() {
       const now = new Date();
       const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-      const dayName = weekdays[now.getDay()];
-      const day = String(now.getDate()).padStart(2, '0');
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const year = now.getFullYear();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('dateDisplay').innerText = `${dayName}, ${day}/${month}/${year}`;
-      document.getElementById('timeDisplay').innerText = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('dateDisplay').innerText = 
+        `${weekdays[now.getDay()]}, ${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
+      document.getElementById('timeDisplay').innerText = 
+        `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
     }
     updateClock();
     setInterval(updateClock, 1000);
 
-    // ===== KIỂM TRA QUYỀN ADMIN → HIỆN NÚT CẬP NHẬT =====
+    // Hiện nút Admin khi đã đăng nhập
     const thongTinDangNhap = JSON.parse(localStorage.getItem("dangNhap") || "null");
     const nutCapNhat = document.getElementById("nutCapNhat");
     if (thongTinDangNhap && thongTinDangNhap.laAdmin) {
       nutCapNhat.classList.add("visible");
-      nutCapNhat.href = "quanly.html"; // Đã đăng nhập → vào thẳng trang quản lý
-    } else {
-      nutCapNhat.classList.remove("visible");
-      nutCapNhat.href = "dangnhap_admin.html"; // Chưa đăng nhập → vào trang đăng nhập Admin
+      nutCapNhat.href = "quanly.html";
     }
-
-    // ===== TẢI DỮ LIỆU TỪ HỆ THỐNG =====
-    function taiDuLieu() {
-      // Cập nhật thông tin chung
-      document.getElementById("tenTruong").textContent = CAIDAT_HE_THONG.tenTruong;
-      document.getElementById("slogan").textContent = `"${CAIDAT_HE_THONG.slogan}"`;
-      document.getElementById("thongDiep").textContent = `📢 Thông điệp: ${CAIDAT_HE_THONG.thongDiep}`;
-      document.getElementById("quyetNghi").textContent = CAIDAT_HE_THONG.quyetNghi;
-
-      // Lọc giáo viên đang hoạt động
-      const dsHoatDong = DANH_SACH_GIAO_VIEN.filter(gv => gv.trangThai === "hoatdong");
-      document.getElementById("tongSoGV").textContent = dsHoatDong.length;
-
-      // Nhóm theo khối
-      const khoiData = {
-        "Khối 1": [], "Khối 2": [], "Khối 3": [], "Khối 4": [], "Khối 5": []
-      };
-      
-      dsHoatDong.forEach(gv => {
-        if (khoiData[gv.khoiPhuTrach]) {
-          khoiData[gv.khoiPhuTrach].push(gv);
-        }
-      });
-
-      // Hiển thị thống kê số lượng từng khối
-      const mauKhoi = {
-        "Khối 1": "var(--khoi1)",
-        "Khối 2": "var(--khoi2)",
-        "Khối 3": "var(--khoi3)",
-        "Khối 4": "var(--khoi4)",
-        "Khối 5": "var(--khoi5)"
-      };
-      const tkHtml = Object.entries(khoiData).map(([ten, ds]) => 
-        `<span><strong style="color: ${mauKhoi[ten]}">●</strong> ${ten}: ${ds.length}</span>`
-      ).join("");
-      document.getElementById("thongKeKhoi").innerHTML = tkHtml;
-
-      // Tạo giao diện từng khối
-      const container = document.getElementById("danhSachKhoi");
-      container.innerHTML = "";
-      
-      const lopKhoi = {
-        "Khối 1": "k1", "Khối 2": "k2", "Khối 3": "k3", "Khối 4": "k4", "Khối 5": "k5"
-      };
-
-      for (const tenKhoi in khoiData) {
-        const dsGV = khoiData[tenKhoi];
-        if (!dsGV.length) continue;
-
-        const lop = lopKhoi[tenKhoi];
-        const card = document.createElement("div");
-        card.className = "col-md-6 col-lg";
-        card.innerHTML = `
-          <div class="khoi-card ${lop}">
-            <div class="khoi-header ${lop}">📁 ${tenKhoi}</div>
-            <div>
-              ${dsGV.map(gv => {
-                const isTruong = gv.chucVu === "Trưởng khối";
-                const lopHienThi = gv.lopPhuTrach || gv.maGV;
-                return `
-                  <div class="gv-item">
-                    <span class="lop-tag">${lopHienThi}</span>
-                    <span class="gv-name">
-                      ${gv.hoTen}
-                      ${isTruong ? `<small class="truong-khoi">(Trưởng khối)</small>` : ""}
-                    </span>
-                  </div>
-                `;
-              }).join("")}
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      }
-    }
-
-    // ===== KHỞI CHẠY =====
-    taiDuLieu();
   </script>
 </body>
 </html>
