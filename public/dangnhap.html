@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng Nhập Quản Trị - Trường Tiểu học Lạc Quới</title>
+  <title>Đăng Nhập Giáo Viên - Trường Tiểu học Lạc Quới</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       min-height: 100vh;
@@ -17,80 +22,96 @@
     }
     .login-card {
       background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      padding: 40px 30px;
-      max-width: 420px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      padding: 45px 35px;
+      max-width: 500px;
       width: 100%;
       text-align: center;
     }
     .login-logo {
-      height: 90px;
-      margin-bottom: 15px;
+      height: 110px;
+      margin-bottom: 20px;
     }
-    .login-title {
+    .school-name {
+      color: #0052cc;
       font-weight: bold;
-      color: #0b5ed7;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      /* Tự co giãn chữ nằm trọn 1 hàng */
+      font-size: clamp(22px, 5vw, 32px);
+      line-height: 1.2;
+      word-break: keep-all;
     }
     .login-subtitle {
       color: #666;
-      font-size: 15px;
-      margin-bottom: 30px;
+      font-size: 18px;
+      margin-bottom: 35px;
     }
     .form-label {
       font-weight: 600;
+      font-size: 17px;
+    }
+    .form-control {
+      padding: 12px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ced4da;
     }
     .btn-login {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       color: white;
       font-weight: bold;
-      padding: 12px;
+      padding: 14px;
       border: none;
       width: 100%;
       border-radius: 8px;
-      font-size: 16px;
-      margin-top: 10px;
+      font-size: 18px;
+      margin-top: 15px;
       transition: opacity 0.2s;
     }
     .btn-login:hover {
       opacity: 0.9;
+      color: white;
     }
     .btn-back {
-      margin-top: 15px;
+      margin-top: 20px;
       display: inline-block;
-      color: #0b5ed7;
+      color: #0052cc;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 16px;
     }
     .btn-back:hover {
       text-decoration: underline;
+      color: #0040aa;
     }
     .alert {
       display: none;
       margin-top: 15px;
+      text-align: left;
     }
   </style>
 </head>
 <body>
   <div class="login-card">
-    <img src="logo_truong.png" alt="Logo Trường" class="login-logo">
-    <h3 class="login-title">TRƯỜNG TIỂU HỌC LẠC QUỚI</h3>
+    <img src="logo_truong.png" alt="Logo Trường Tiểu học Lạc Quới" class="login-logo">
+    
+    <h2 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h2>
     <p class="login-subtitle">👤 Đăng nhập — Giáo viên</p>
 
     <form id="loginForm">
-      <div class="mb-3 text-start">
+      <div class="mb-4 text-start">
         <label class="form-label">Tên đăng nhập</label>
-        <input type="text" id="username" class="form-control" placeholder="Nhập tên quản trị" required>
+        <input type="text" id="username" class="form-control" placeholder="Nhập mã giáo viên hoặc tên đăng nhập" required>
       </div>
-      <div class="mb-3 text-start">
+      <div class="mb-4 text-start">
         <label class="form-label">Mật khẩu</label>
-        <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+        <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu cá nhân" required>
       </div>
+      
       <button type="submit" class="btn-login">Đăng Nhập</button>
       
       <div class="alert alert-danger" id="errorAlert">
-        Tên đăng nhập hoặc mật khẩu không đúng!
+        ❌ Tên đăng nhập hoặc mật khẩu không đúng! Vui lòng kiểm tra lại.
       </div>
     </form>
 
@@ -98,12 +119,13 @@
   </div>
 
   <script>
-    // ===== Tài khoản Quản trị =====
-    // Bạn có thể đổi tài khoản mật khẩu ở đây
-    const adminAccount = {
-      username: "Admin",
-      password: "Admin@123"
-    };
+    // ===== TÀI KHOẢN GIÁO VIÊN =====
+    // Sau này mình mở rộng danh sách tài khoản giáo viên tại đây
+    const danhSachGiaoVien = [
+      { user: "giaovien1", pass: "lacquoi2026", ten: "Trần Phan Diễm Trang" },
+      { user: "giaovien2", pass: "lacquoi2026", ten: "Trần Thị Ngọc Thơ" },
+      // Thêm tài khoản khác tại đây
+    ];
 
     const loginForm = document.getElementById('loginForm');
     const errorAlert = document.getElementById('errorAlert');
@@ -111,15 +133,21 @@
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const user = document.getElementById('username').value.trim();
-      const pass = document.getElementById('password').value.trim();
+      const userInput = document.getElementById('username').value.trim();
+      const passInput = document.getElementById('password').value.trim();
 
-      if (user === adminAccount.username && pass === adminAccount.password) {
-        // Đăng nhập thành công → chuyển trang quản lý
+      // Kiểm tra tài khoản trong danh sách giáo viên
+      const taiKhoanHopLe = danhSachGiaoVien.find(acc => 
+        acc.user === userInput && acc.pass === passInput
+      );
+
+      if (taiKhoanHopLe) {
         localStorage.setItem('isLoggedIn', 'true');
-        window.location.href = "quanly.html";
+        localStorage.setItem('userName', taiKhoanHopLe.ten);
+        localStorage.setItem('userType', 'giaovien');
+        // Đăng nhập thành công → trang cá nhân giáo viên
+        window.location.href = "trangcanhan.html";
       } else {
-        // Sai thông tin → hiển thị lỗi
         errorAlert.style.display = "block";
       }
     });
