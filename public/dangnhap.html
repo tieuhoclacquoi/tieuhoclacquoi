@@ -24,7 +24,7 @@
       background: white;
       border-radius: 20px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      padding: 45px 35px;
+      padding: 40px 35px;
       max-width: 500px;
       width: 100%;
       text-align: center;
@@ -37,7 +37,6 @@
       color: #0052cc;
       font-weight: bold;
       margin-bottom: 8px;
-      /* Tự co giãn chữ nằm trọn 1 hàng */
       font-size: clamp(22px, 5vw, 32px);
       line-height: 1.2;
       word-break: keep-all;
@@ -45,7 +44,7 @@
     .login-subtitle {
       color: #666;
       font-size: 18px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
     .form-label {
       font-weight: 600;
@@ -66,7 +65,7 @@
       width: 100%;
       border-radius: 8px;
       font-size: 18px;
-      margin-top: 15px;
+      margin-top: 10px;
       transition: opacity 0.2s;
     }
     .btn-login:hover {
@@ -89,6 +88,68 @@
       margin-top: 15px;
       text-align: left;
     }
+    .forgot-link {
+      text-align: right;
+      margin: 8px 0 15px;
+    }
+    .forgot-link a {
+      color: #0052cc;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .forgot-link a:hover {
+      text-decoration: underline;
+    }
+    /* ===== Khôi phục mật khẩu ===== */
+    .forgot-section {
+      display: none;
+    }
+    .forgot-section.active {
+      display: block;
+    }
+    .login-section.hidden {
+      display: none;
+    }
+    .option-box {
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .option-box:hover, .option-box.selected {
+      border-color: #0052cc;
+      background-color: #f0f5ff;
+    }
+    .option-box input {
+      margin-right: 8px;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .btn-secondary:hover {
+      background-color: #5a6268;
+      color: white;
+    }
+    .info-note {
+      background-color: #e7f0ff;
+      border-left: 4px solid #0052cc;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 15px 0;
+      text-align: left;
+      font-size: 14px;
+      color: #004085;
+    }
   </style>
 </head>
 <body>
@@ -98,45 +159,176 @@
     <h2 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h2>
     <p class="login-subtitle">👤 Đăng nhập — Giáo viên</p>
 
-    <form id="loginForm">
-      <div class="mb-4 text-start">
-        <label class="form-label">Tên đăng nhập</label>
-        <input type="text" id="username" class="form-control" placeholder="Nhập mã giáo viên hoặc tên đăng nhập" required>
+    <!-- ===== PHẦN ĐĂNG NHẬP ===== -->
+    <div class="login-section" id="loginSection">
+      <form id="loginForm">
+        <div class="mb-3 text-start">
+          <label class="form-label">Tên đăng nhập / Mã giáo viên</label>
+          <input type="text" id="username" class="form-control" placeholder="Nhập mã giáo viên hoặc tên đăng nhập" required>
+        </div>
+        <div class="mb-2 text-start">
+          <label class="form-label">Mật khẩu</label>
+          <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu cá nhân" required>
+        </div>
+        
+        <div class="forgot-link">
+          <a href="javascript:;" id="showForgot">Quên mật khẩu?</a>
+        </div>
+        
+        <button type="submit" class="btn-login">Đăng Nhập</button>
+        
+        <div class="alert alert-danger" id="errorAlert">
+          ❌ Tên đăng nhập hoặc mật khẩu không đúng! Vui lòng kiểm tra lại.
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== PHẦN QUÊN MẬT KHẨU ===== -->
+    <div class="forgot-section" id="forgotSection">
+      <h5 style="color: #0052cc; font-weight: bold; margin-bottom: 20px;">🔑 Khôi phục mật khẩu</h5>
+      
+      <div class="mb-3 text-start">
+        <label class="form-label">Tên đăng nhập / Mã giáo viên</label>
+        <input type="text" id="forgotUser" class="form-control" placeholder="Nhập tên đăng nhập cần khôi phục" required>
       </div>
-      <div class="mb-4 text-start">
-        <label class="form-label">Mật khẩu</label>
-        <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu cá nhân" required>
+
+      <p style="text-align: left; font-weight: 600; margin: 15px 0 8px;">Chọn nơi nhận mã xác minh:</p>
+      
+      <div class="option-box" id="optionEmail" onclick="selectOption('email')">
+        <input type="radio" name="receiveMethod" id="radioEmail" value="email">
+        <label for="radioEmail" style="margin: 0; cursor: pointer;">📧 Nhận qua Email cá nhân</label>
       </div>
       
-      <button type="submit" class="btn-login">Đăng Nhập</button>
-      
-      <div class="alert alert-danger" id="errorAlert">
-        ❌ Tên đăng nhập hoặc mật khẩu không đúng! Vui lòng kiểm tra lại.
+      <div class="option-box" id="optionSms" onclick="selectOption('sms')">
+        <input type="radio" name="receiveMethod" id="radioSms" value="sms">
+        <label for="radioSms" style="margin: 0; cursor: pointer;">📱 Nhận qua Số điện thoại</label>
       </div>
-    </form>
+
+      <div class="info-note">
+        💡 <strong>Phiên bản hiện tại:</strong> Hệ thống kiểm tra thông tin khớp với hồ sơ đã đăng ký.<br>
+        ⚡ <strong>Phiên bản nâng cấp trả phí:</strong> Sẽ tự động gửi mã xác minh về Email/SMS thực tế.
+      </div>
+
+      <button type="button" class="btn-login" id="btnSendCode" onclick="sendResetCode()">Gửi Mã Xác Minh</button>
+      <button type="button" class="btn-secondary" id="backToLogin">← Quay lại Đăng nhập</button>
+      
+      <div class="alert alert-success" id="successAlert" style="text-align: left;">
+        ✅ Thông tin hợp lệ! Mã xác minh đã được gửi về <span id="contactInfo"></span>
+      </div>
+      <div class="alert alert-danger" id="notFoundAlert" style="text-align: left;">
+        ❌ Không tìm thấy thông tin khớp. Vui lòng kiểm tra lại tên đăng nhập hoặc liên hệ Quản trị viên.
+      </div>
+    </div>
 
     <a href="index.html" class="btn-back">← Quay lại Trang chủ</a>
   </div>
 
   <script>
-    // ===== TÀI KHOẢN GIÁO VIÊN =====
-    // Sau này mình mở rộng danh sách tài khoản giáo viên tại đây
+    // ===== DANH SÁCH TÀI KHOẢN GIÁO VIÊN =====
+    // Thêm/sửa thông tin giáo viên tại đây
     const danhSachGiaoVien = [
-      { user: "giaovien1", pass: "lacquoi2026", ten: "Trần Phan Diễm Trang" },
-      { user: "giaovien2", pass: "lacquoi2026", ten: "Trần Thị Ngọc Thơ" },
-      // Thêm tài khoản khác tại đây
+      { 
+        user: "giaovien1", 
+        pass: "lacquoi2026", 
+        ten: "Trần Phan Diễm Trang",
+        email: "trandiem@school.edu.vn",
+        dienthoai: "09xxxx0001"
+      },
+      { 
+        user: "giaovien2", 
+        pass: "lacquoi2026", 
+        ten: "Trần Thị Ngọc Thơ",
+        email: "ngoctho@school.edu.vn",
+        dienthoai: "09xxxx0002"
+      },
+      { 
+        user: "quantri", 
+        pass: "lacquoi2026", 
+        ten: "Quản trị Hệ thống",
+        email: "admin@lacquoi.edu.vn",
+        dienthoai: "09xxxx9999",
+        laAdmin: true
+      }
+      // Thêm giáo viên khác:
+      // , { user: "...", pass: "...", ten: "...", email: "...", dienthoai: "..." }
     ];
 
-    const loginForm = document.getElementById('loginForm');
-    const errorAlert = document.getElementById('errorAlert');
+    let selectedMethod = null;
 
-    loginForm.addEventListener('submit', function(e) {
+    // ===== Chuyển giữa Đăng nhập / Quên mật khẩu =====
+    document.getElementById('showForgot').addEventListener('click', function() {
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('forgotSection').classList.add('active');
+      hideAllAlerts();
+    });
+
+    document.getElementById('backToLogin').addEventListener('click', function() {
+      document.getElementById('forgotSection').classList.remove('active');
+      document.getElementById('loginSection').classList.remove('hidden');
+      hideAllAlerts();
+      selectedMethod = null;
+      resetOptionStyles();
+    });
+
+    // ===== Chọn phương thức nhận mã =====
+    function selectOption(method) {
+      selectedMethod = method;
+      document.getElementById('radioEmail').checked = (method === 'email');
+      document.getElementById('radioSms').checked = (method === 'sms');
+      resetOptionStyles();
+      document.getElementById('optionEmail').classList.toggle('selected', method === 'email');
+      document.getElementById('optionSms').classList.toggle('selected', method === 'sms');
+    }
+
+    function resetOptionStyles() {
+      document.getElementById('optionEmail').classList.remove('selected');
+      document.getElementById('optionSms').classList.remove('selected');
+    }
+
+    // ===== Gửi mã khôi phục =====
+    function sendResetCode() {
+      const username = document.getElementById('forgotUser').value.trim();
+      
+      if (!username) {
+        alert('Vui lòng nhập tên đăng nhập!');
+        return;
+      }
+      if (!selectedMethod) {
+        alert('Vui lòng chọn cách nhận mã xác minh!');
+        return;
+      }
+
+      // Tìm tài khoản trong danh sách
+      const taiKhoan = danhSachGiaoVien.find(acc => acc.user === username);
+      
+      hideAllAlerts();
+      
+      if (taiKhoan) {
+        const thongTinLienHe = selectedMethod === 'email' 
+          ? `Email: ${taiKhoan.email}` 
+          : `SĐT: ${taiKhoan.dienthoai}`;
+        
+        document.getElementById('contactInfo').textContent = thongTinLienHe;
+        document.getElementById('successAlert').style.display = 'block';
+        
+        // Lưu thông tin để bước sau đổi mật khẩu
+        localStorage.setItem('resetUser', username);
+        localStorage.setItem('resetMethod', selectedMethod);
+        
+        // Sau này nâng cấp: gọi API gửi mã thực tế về mail/SMS
+      } else {
+        document.getElementById('notFoundAlert').style.display = 'block';
+      }
+    }
+
+    // ===== Đăng nhập chính =====
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       const userInput = document.getElementById('username').value.trim();
       const passInput = document.getElementById('password').value.trim();
+      hideAllAlerts();
 
-      // Kiểm tra tài khoản trong danh sách giáo viên
       const taiKhoanHopLe = danhSachGiaoVien.find(acc => 
         acc.user === userInput && acc.pass === passInput
       );
@@ -144,13 +336,25 @@
       if (taiKhoanHopLe) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userName', taiKhoanHopLe.ten);
-        localStorage.setItem('userType', 'giaovien');
-        // Đăng nhập thành công → trang cá nhân giáo viên
-        window.location.href = "trangcanhan.html";
+        localStorage.setItem('userType', taiKhoanHopLe.laAdmin ? 'admin' : 'giaovien');
+        localStorage.setItem('currentUser', taiKhoanHopLe.user);
+        
+        // Chuyển trang theo quyền
+        if (taiKhoanHopLe.laAdmin) {
+          window.location.href = "quanly.html";
+        } else {
+          window.location.href = "trangcanhan.html";
+        }
       } else {
-        errorAlert.style.display = "block";
+        document.getElementById('errorAlert').style.display = 'block';
       }
     });
+
+    function hideAllAlerts() {
+      document.getElementById('errorAlert').style.display = 'none';
+      document.getElementById('successAlert').style.display = 'none';
+      document.getElementById('notFoundAlert').style.display = 'none';
+    }
   </script>
 </body>
 </html>
