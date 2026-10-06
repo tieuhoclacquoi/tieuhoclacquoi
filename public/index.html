@@ -17,126 +17,185 @@
       background-color: #f0f4f8;
       font-family: "Times New Roman", sans-serif;
     }
+
+    /* === HEADER CHÍNH === */
     .header-top {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       color: white;
-      padding: 20px 30px;
+      padding: 15px 20px;
       border-radius: 12px 12px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
       flex-wrap: wrap;
+      gap: 15px;
     }
-    .school-info h1 { font-size: 28px; font-weight: bold; margin: 0; }
-    .school-info p { margin: 4px 0; font-style: italic; opacity: 0.9; }
-    .page-title { text-align: center; flex: 1; }
-    .page-title h2 { font-size: 32px; font-weight: bold; margin: 0; }
-    .datetime-box { text-align: right; min-width: 180px; }
-    .date-part { font-size: 16px; }
-    .time-part { font-size: 28px; font-weight: bold; color: #ffd700; }
+    .header-left {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo-img {
+      height: 70px;
+      margin-right: 15px;
+      border-radius: 8px;
+    }
+    .school-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.3;
+    }
+    .school-slogan {
+      font-size: 14px;
+      margin: 4px 0 0 0;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .header-center {
+      text-align: center;
+      flex: 1;
+      padding: 0 15px;
+    }
+    .page-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+    }
+    .datetime-box {
+      text-align: right;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .date-part {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .time-part {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ff3366;
+    }
+
+    /* === KHỐI === */
     .khoi-card {
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       height: 100%;
       border: 4px solid;
     }
-    .khoi-card.k1 { border-color: var(--khoi1); }
-    .khoi-card.k2 { border-color: var(--khoi2); }
-    .khoi-card.k3 { border-color: var(--khoi3); }
-    .khoi-card.k4 { border-color: var(--khoi4); }
-    .khoi-card.k5 { border-color: var(--khoi5); }
+    .khoi-card.k1 { border-color: #0b5ed7; }
+    .khoi-card.k2 { border-color: #198754; }
+    .khoi-card.k3 { border-color: #fd7e14; }
+    .khoi-card.k4 { border-color: #9933cc; }
+    .khoi-card.k5 { border-color: #0dcaf0; }
+
     .khoi-header {
-      padding: 12px;
+      padding: 10px;
       color: white;
       font-weight: bold;
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: opacity 0.2s;
     }
-    .khoi-header.k1 { background: var(--khoi1); }
-    .khoi-header.k2 { background: var(--khoi2); }
-    .khoi-header.k3 { background: var(--khoi3); }
-    .khoi-header.k4 { background: var(--khoi4); }
-    .khoi-header.k5 { background: var(--khoi5); }
+    .khoi-header:hover { opacity: 0.9; }
+    .khoi-header.k1 { background-color: var(--khoi1); }
+    .khoi-header.k2 { background-color: var(--khoi2); }
+    .khoi-header.k3 { background-color: var(--khoi3); }
+    .khoi-header.k4 { background-color: var(--khoi4); }
+    .khoi-header.k5 { background-color: var(--khoi5); }
+
     .gv-item {
-      padding: 12px 15px;
+      padding: 8px 12px;
       border-bottom: 1px solid #eee;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .lop-tag {
-      padding: 6px 14px;
-      border-radius: 6px;
+      padding: 4px 12px;
+      border-radius: 4px;
       color: white;
       font-weight: bold;
-      min-width: 80px;
+      min-width: 70px;
       text-align: center;
+      font-size: 14px;
     }
-    .k1 .lop-tag { background: var(--khoi1); }
-    .k2 .lop-tag { background: var(--khoi2); }
-    .k3 .lop-tag { background: var(--khoi3); }
-    .k4 .lop-tag { background: var(--khoi4); }
-    .k5 .lop-tag { background: var(--khoi5); }
-    .gv-name { flex: 1; font-size: 16px; }
-    .truong-khoi { color: #28a745; font-size: 14px; }
+    .k1 .lop-tag { background-color: var(--khoi1); }
+    .k2 .lop-tag { background-color: var(--khoi2); }
+    .k3 .lop-tag { background-color: var(--khoi3); }
+    .k4 .lop-tag { background-color: var(--khoi4); }
+    .k5 .lop-tag { background-color: var(--khoi5); }
+    .gv-name { flex: 1; font-size: 15px; }
+    .truong-khoi { color: #28a745; font-size: 13px; }
+
     .stats-bar {
-      background: #e9ecef;
-      border-radius: 10px;
-      padding: 18px 25px;
-      margin: 25px 0;
+      background-color: #e9ecef;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin: 20px 0;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
     }
     .btn-custom {
-      padding: 12px 25px;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
       font-weight: bold;
       border: none;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      transition: 0.2s;
+      white-space: nowrap;
     }
-    .btn-custom:hover { opacity: 0.9; transform: translateY(-2px); color: white; }
-    .admin-only { display: none; }
-    .admin-only.visible { display: inline-block; }
     .footer-bar {
-      background: #0b5ed7;
+      background-color: #0b5ed7;
       color: white;
-      padding: 18px 25px;
+      padding: 12px 20px;
       border-radius: 0 0 12px 12px;
-      margin-top: 25px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
     }
+    .khoi-link { text-decoration: none; color: inherit; display: block; }
   </style>
 </head>
 <body>
   <div class="container py-4">
-    <!-- HEADER -->
+
+    <!-- HEADER CHÍNH -->
     <div class="header-top">
-      <div class="school-info">
-        <h1>TRƯỜNG TIỂU HỌC LẠC QUỚI</h1>
-        <p>"Tất cả vì học sinh thân yêu"</p>
-        <p>Năm học: 2026-2027</p>
+      <div class="header-left">
+        <img src="https://drive.google.com/uc?export=view&id=12HVKo7ZPDijs7wpt42N3XYj3ISEMXPl7" 
+             alt="Logo Trường Tiểu học Lạc Quới" class="logo-img">
+        <div>
+          <h5 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h5>
+          <p class="school-slogan">"Tất cả vì học sinh thân yêu"</p>
+        </div>
       </div>
-      <div class="page-title">
-        <h2>GIÁO VIÊN CÁC KHỐI</h2>
+
+      <div class="header-center">
+        <h2 class="page-title">GIÁO VIÊN CÁC KHỐI</h2>
       </div>
+
       <div class="datetime-box">
-        <div class="date-part" id="dateDisplay"></div>
-        <div class="time-part" id="timeDisplay"></div>
+        <div class="date-part" id="dateDisplay">Thứ Hai, 05/10/2026</div>
+        <div class="time-part" id="timeDisplay">22:56:00</div>
       </div>
     </div>
 
-    <!-- DANH SÁCH KHỐI GIÁO VIÊN -->
-    <div class="row g-4 mt-2">
+    <!-- BẢNG 5 KHỐI -->
+    <div class="row g-3 mt-1">
+
       <!-- KHỐI 1 -->
       <div class="col-md-6 col-lg">
         <div class="khoi-card k1">
-          <div class="khoi-header k1">📁 KHỐI 1</div>
+          <a href="#" class="khoi-link" id="link-khoi1" target="_blank">
+            <div class="khoi-header k1">📁 KHỐI 1</div>
+          </a>
           <div>
             <div class="gv-item"><span class="lop-tag">1A</span><span class="gv-name">Trần Phan Diễm Trang <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">1B</span><span class="gv-name">Nguyễn Thị Thanh Thảo</span></div>
@@ -150,7 +209,9 @@
       <!-- KHỐI 2 -->
       <div class="col-md-6 col-lg">
         <div class="khoi-card k2">
-          <div class="khoi-header k2">📁 KHỐI 2</div>
+          <a href="#" class="khoi-link" id="link-khoi2" target="_blank">
+            <div class="khoi-header k2">📁 KHỐI 2</div>
+          </a>
           <div>
             <div class="gv-item"><span class="lop-tag">2A</span><span class="gv-name">Trần Thị Ngọc Thơ <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">2B</span><span class="gv-name">Lê Thị Thúy Loan</span></div>
@@ -164,7 +225,9 @@
       <!-- KHỐI 3 -->
       <div class="col-md-6 col-lg">
         <div class="khoi-card k3">
-          <div class="khoi-header k3">📁 KHỐI 3</div>
+          <a href="#" class="khoi-link" id="link-khoi3" target="_blank">
+            <div class="khoi-header k3">📁 KHỐI 3</div>
+          </a>
           <div>
             <div class="gv-item"><span class="lop-tag">3A</span><span class="gv-name">Thạch Tuyết Xuân <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">3B</span><span class="gv-name">Trần Thị Mỹ Linh</span></div>
@@ -178,7 +241,9 @@
       <!-- KHỐI 4 -->
       <div class="col-md-6 col-lg">
         <div class="khoi-card k4">
-          <div class="khoi-header k4">📁 KHỐI 4</div>
+          <a href="#" class="khoi-link" id="link-khoi4" target="_blank">
+            <div class="khoi-header k4">📁 KHỐI 4</div>
+          </a>
           <div>
             <div class="gv-item"><span class="lop-tag">4A</span><span class="gv-name">Lưu Thị Cẩm Loan <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">4B</span><span class="gv-name">Mai Thị Thảo Ngân</span></div>
@@ -193,7 +258,9 @@
       <!-- KHỐI 5 -->
       <div class="col-md-6 col-lg">
         <div class="khoi-card k5">
-          <div class="khoi-header k5">📁 KHỐI 5</div>
+          <a href="#" class="khoi-link" id="link-khoi5" target="_blank">
+            <div class="khoi-header k5">📁 KHỐI 5</div>
+          </a>
           <div>
             <div class="gv-item"><span class="lop-tag">5A</span><span class="gv-name">Vương Văn Thanh <small class="truong-khoi">(Trưởng khối)</small></span></div>
             <div class="gv-item"><span class="lop-tag">5B</span><span class="gv-name">Trần Thị Quí</span></div>
@@ -209,8 +276,8 @@
     <!-- THỐNG KÊ -->
     <div class="stats-bar">
       <h5 class="mb-0">📊 TỔNG SỐ GIÁO VIÊN: <strong>30</strong></h5>
-      <div class="d-flex gap-3 flex-wrap">
-        <span><strong style="color: var(--khoi1)">●</strong> Khối 1: 5</span>
+      <div class="d-flex gap-3">
+        <span><strong style="color: var(--khoi1)">●</strong> Khối 1: 6</span>
         <span><strong style="color: var(--khoi2)">●</strong> Khối 2: 5</span>
         <span><strong style="color: var(--khoi3)">●</strong> Khối 3: 5</span>
         <span><strong style="color: var(--khoi4)">●</strong> Khối 4: 6</span>
@@ -218,40 +285,59 @@
       </div>
     </div>
 
-    <!-- NÚT CHỨC NĂNG → ĐỦ TẤT CẢ NÚT -->
-    <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
-      <a href="index.html" class="btn-custom" style="background: #ffc107; color: #000;">🔄 Tải lại dữ liệu</a>
-      <a href="dangnhap_giaovien.html" class="btn-custom" style="background: #0d6efd; color: white;">👤 Đăng nhập (Giáo viên)</a>
+    <!-- NÚT CHỨC NĂNG -->
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+      <button class="btn btn-warning btn-custom">🔄 Tải lại dữ liệu</button>
+      <button class="btn btn-primary btn-custom" style="background-color: var(--khoi1);">📁KHỐI 1</button>
+      <button class="btn btn-success btn-custom" style="background-color: var(--khoi2);">📁KHỐI 2</button>
+      <button class="btn btn-custom" style="background-color: var(--khoi3); color:white;">📁KHỐI 3</button>
+      <button class="btn btn-custom" style="background-color: var(--khoi4); color:white;">📁KHỐI 4</button>
+      <button class="btn btn-info btn-custom" style="background-color: var(--khoi5); color:#000;">📁KHỐI 5</button>
       <a href="dangnhap_admin.html" class="btn-custom" style="background: #212529; color: white;">🔐 Đăng nhập (Admin)</a>
-      <a href="quanly.html" class="btn-custom admin-only" id="nutCapNhat" style="background: #198754; color: white;">⚙️ Cập nhật Dữ liệu (Admin)</a>
+      <a href="index.html" class="btn-custom" style="background: #ffc107; color: #000;">🔄 Làm mới dữ liệu</a>
+      <a href="dangnhap_giaovien.html" class="btn-custom" style="background: #0d6efd; color: white;">👤 Đăng nhập (Giáo viên)</a>
     </div>
 
     <!-- FOOTER -->
-    <div class="footer-bar mt-5">
-      <p class="mb-2 fst-italic fs-6">📢 Thông điệp: Mỗi thầy cô là một tấm gương đạo đức, tự học và sáng tạo.</p>
-      <p class="mb-0 fw-bold fs-5">KỸ CƯƠNG – TÌNH THƯƠNG – TRÁCH NHIỆM</p>
+    <div class="footer-bar">
+      <p class="mb-0 fst-italic">📢 Thông điệp: Mỗi thầy cô là một tấm gương đạo đức, tự học và sáng tạo.</p>
+      <p class="mb-0 fw-bold">KỸ CƯƠNG – TÌNH THƯƠNG – TRÁCH NHIỆM</p>
     </div>
   </div>
 
   <script>
-    // Đồng hồ thời gian thực
+    // ===== ĐỒNG HỒ TỰ CHẠY =====
     function updateClock() {
       const now = new Date();
       const weekdays = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-      document.getElementById('dateDisplay').innerText = 
-        `${weekdays[now.getDay()]}, ${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
-      document.getElementById('timeDisplay').innerText = 
-        `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+      const dayName = weekdays[now.getDay()];
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      document.getElementById('dateDisplay').innerText = `${dayName}, ${day}/${month}/${year}`;
+      document.getElementById('timeDisplay').innerText = `${hours}:${minutes}:${seconds}`;
     }
     updateClock();
     setInterval(updateClock, 1000);
 
-    // Hiện nút "Cập nhật Dữ liệu" khi đã đăng nhập với quyền Admin
-    const thongTinDangNhap = JSON.parse(localStorage.getItem("dangNhap") || "null");
-    const nutCapNhat = document.getElementById("nutCapNhat");
-    if (thongTinDangNhap && thongTinDangNhap.laAdmin) {
-      nutCapNhat.classList.add("visible");
-    }
+    // ===== LINK DRIVE 5 KHỐI =====
+    const driveLinks = {
+      khoi1: "", // Dán link KHỐI 1 vào dấu ngoặc
+      khoi2: "", // Dán link KHỐI 2
+      khoi3: "", // Dán link KHỐI 3
+      khoi4: "", // Dán link KHỐI 4
+      khoi5: ""  // Dán link KHỐI 5
+    };
+
+    document.getElementById('link-khoi1').href = driveLinks.khoi1 || '#';
+    document.getElementById('link-khoi2').href = driveLinks.khoi2 || '#';
+    document.getElementById('link-khoi3').href = driveLinks.khoi3 || '#';
+    document.getElementById('link-khoi4').href = driveLinks.khoi4 || '#';
+    document.getElementById('link-khoi5').href = driveLinks.khoi5 || '#';
   </script>
 </body>
 </html>
