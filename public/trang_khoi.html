@@ -16,30 +16,51 @@
     }
     .khoi-title { font-size: 28px; font-weight: bold; }
     .user-info { text-align: right; }
-    .btn-setting { background: rgba(255,255,255,0.2); border: none; color: white; border-radius: 8px; padding: 8px 15px; text-decoration: none; margin-left: 10px; }
+    .btn-setting {
+      background: rgba(255,255,255,0.2); border: none; color: white;
+      border-radius: 8px; padding: 8px 15px; text-decoration: none; margin-left: 10px;
+    }
     .btn-setting:hover { background: rgba(255,255,255,0.3); color: white; }
     .gv-card {
       background: white; border-radius: 10px; padding: 18px 22px; margin-bottom: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: 0.2s;
     }
     .gv-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-    .gv-link { text-decoration: none; color: inherit; display: block; }
     .gv-name { font-size: 18px; font-weight: bold; color: #0052cc; }
     .gv-role { font-size: 14px; color: #28a745; margin-left: 10px; }
     .gv-nolink { color: #999; }
     .btn-create-folder {
-      background: #28a745; color: white; border: none; border-radius: 8px; padding: 12px 20px;
-      font-weight: bold; font-size: 16px; margin-top: 10px; width: 100%;
+      background: #28a745; color: white; border: none; border-radius: 8px; padding: 14px 24px;
+      font-weight: bold; font-size: 17px; width: 100%; margin: 10px 0;
     }
     .btn-create-folder:hover { background: #218838; color: white; }
+    .khoi-link-bar {
+      background: #e7f0ff; border-left: 4px solid #0052cc; padding: 15px 20px;
+      border-radius: 8px; margin-bottom: 25px; font-size: 16px;
+    }
+    .khoi-link-bar a { color: #0052cc; font-weight: bold; text-decoration: none; }
+    .step-box {
+      background: #fff9e6; border-left: 4px solid #ffc107; padding: 18px 22px;
+      border-radius: 8px; margin: 15px 0;
+    }
+    .step-box h5 { color: #b37400; font-weight: bold; }
     .alert-no-permission {
       position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
       background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      z-index: 9999; display: none; text-align: center; max-width: 400px;
+      z-index: 9999; display: none; text-align: center; max-width: 420px;
     }
     .btn-back { display: inline-block; margin-top: 20px; color: #0052cc; text-decoration: none; }
-    .khoi-link-bar { background: #e7f0ff; border-left: 4px solid #0052cc; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; }
-    .khoi-link-bar a { color: #0052cc; font-weight: bold; text-decoration: none; }
+    .link-input-box {
+      background: #f8f9fa; border: 2px solid #dee2e6; border-radius: 8px; padding: 20px;
+      margin-top: 15px; display: none;
+    }
+    .link-input-box.active { display: block; }
+    .btn-save { background: #0b5ed7; color: white; border: none; padding: 10px 25px; border-radius: 6px; font-weight: bold; }
+    .btn-save:hover { background: #0a58ca; color: white; }
+    .current-link-box {
+      background: #e6ffed; border-left: 4px solid #28a745; padding: 12px 18px;
+      border-radius: 6px; margin: 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -61,22 +82,44 @@
     <div class="khoi-link-bar">
       📂 <strong>Thư mục chung khối:</strong>
       <a id="linkChung" href="" target="_blank">Đang tải...</a>
+      <br><small style="color:#666;">👉 Mở thư mục này trước → tạo thư mục cá nhân bên trong</small>
     </div>
 
-    <!-- Nút tạo thư mục cá nhân - chỉ hiện khi chưa có link -->
-    <div id="khuVucTaoThuMuc" style="display: none; margin-bottom: 25px;">
-      <div class="alert alert-warning">
-        <strong>👋 Chào bạn!</strong> Bạn chưa có thư mục hồ sơ cá nhân. Vui lòng tạo thư mục để lưu trữ tài liệu.
+    <!-- Hướng dẫn tạo thư mục cá nhân - LUÔN HIỂN THỊ -->
+    <div class="step-box">
+      <h5>📋 Hướng dẫn tạo/cập nhật thư mục hồ sơ cá nhân</h5>
+      <p><strong>Bước 1:</strong> Mở <a id="linkChung2" href="" target="_blank" style="color:#0052cc;">Thư mục chung khối</a> ở trên</p>
+      <p><strong>Bước 2:</strong> Tạo thư mục mới với tên: <span id="tenThuMuc" style="color:#d63384; font-weight:bold; font-size:110%;">Lê Thị Yến Thiên</span></p>
+      <p><strong>Bước 3:</strong> Vào thư mục vừa tạo → tạo sẵn các thư mục con:</p>
+      <code style="background:#fff; padding:8px 12px; border-radius:4px; display:inline-block; margin:5px 0;">
+        KHBD_WORD &nbsp;|&nbsp; KHBD_PPTX &nbsp;|&nbsp; BB_HOP_TO_CHUYEN_MON &nbsp;|&nbsp; KET_QUA_HK1 &nbsp;|&nbsp; KET_QUA_HK2
+      </code>
+      <p style="margin-top:10px;"><strong>Bước 4:</strong> Sao chép đường link thư mục vừa tạo → dán vào ô bên dưới để lưu:</p>
+      
+      <button class="btn-create-folder" id="btnHienOLink">📋 DÁN LINK THƯ MỤC VÀ LƯU</button>
+      
+      <div class="link-input-box" id="oNhapLink">
+        <label><strong>Dán link thư mục cá nhân của bạn vào đây:</strong></label>
+        <input type="url" id="inputLinkRieng" class="form-control" placeholder="https://drive.google.com/drive/folders/xxxxxx" style="margin:10px 0;">
+        <button class="btn-save" id="btnLuuLink">✅ LƯU LINK</button>
+        <button class="btn btn-secondary" id="btnDongOLink" style="margin-left:10px;">Đóng</button>
+        <small style="color:#666; display:block; margin-top:8px;">
+          💡 Lưu ý: Link phải có dạng: <code>https://drive.google.com/drive/folders/...</code>
+        </small>
       </div>
-      <button class="btn-create-folder" id="btnTaoThuMuc">📁 TẠO THƯ MỤC HỒ SƠ CỦA TÔI (Bắt buộc)</button>
-      <small style="color:#666;">
-        Sau khi tạo thư mục trên Google Drive, bạn tạo sẵn các thư mục con:<br>
-        KHBD_WORD | KHBD_PPTX | BB_HOP_TO_CHUYEN_MON | KET_QUA_HK1 | KET_QUA_HK2
-      </small>
+      
+      <!-- Link hiện có -->
+      <div id="hienLinkHienTai" style="display:none;">
+        <div class="current-link-box">
+          ✅ <strong>Thư mục hồ sơ của bạn:</strong><br>
+          <a id="linkHienTai" href="" target="_blank" style="color:#28a745; font-weight:bold;">Mở thư mục hồ sơ của tôi →</a>
+          <br><small style="color:#666;">Nếu muốn thay đổi → bấm nút trên để dán link mới</small>
+        </div>
+      </div>
     </div>
 
     <!-- DANH SÁCH THÀNH VIÊN KHỐI -->
-    <h4 class="mb-3">Danh sách thành viên trong khối:</h4>
+    <h4 class="mb-3" style="margin-top:30px;">Danh sách thành viên trong khối:</h4>
     <div id="danhSachThanhVien"></div>
 
     <a href="index.html" class="btn-back">← Quay lại Trang chủ</a>
@@ -84,7 +127,7 @@
 
   <!-- Thông báo không có quyền -->
   <div class="alert-no-permission" id="thongBaoKhongQuyen">
-    <h4 style="color: #dc3545;">⚠️ Không có quyền truy cập</h4>
+    <h4 style="color: #dc3545;">⚠️ Không có quyền xem</h4>
     <p>Bạn chỉ có quyền mở thư mục hồ sơ của chính mình.<br>Nếu cần xem hồ sơ người khác, vui lòng liên hệ Trưởng khối.</p>
     <button class="btn btn-secondary mt-2" onclick="document.getElementById('thongBaoKhongQuyen').style.display='none'">Đóng</button>
   </div>
@@ -104,22 +147,26 @@
     // === Hiển thị thông tin trang ===
     document.getElementById("tenKhoi").textContent = `📁 ${khoiHienTai.toUpperCase()}`;
     document.getElementById("tenNguoiDung").textContent = `Xin chào: ${thongTinDangNhap.ten}`;
+    document.getElementById("tenThuMuc").textContent = thongTinDangNhap.ten;
 
-    // === Hiển thị link thư mục chung khối ===
+    // === Lấy link thư mục chung khối ===
     let linkChung = "";
     if (khoiHienTai === "Khối 1") linkChung = CAIDAT_HE_THONG.linkKhoi1;
     else if (khoiHienTai === "Khối 2") linkChung = CAIDAT_HE_THONG.linkKhoi2;
     else if (khoiHienTai === "Khối 3") linkChung = CAIDAT_HE_THONG.linkKhoi3;
     else if (khoiHienTai === "Khối 4") linkChung = CAIDAT_HE_THONG.linkKhoi4;
     else if (khoiHienTai === "Khối 5") linkChung = CAIDAT_HE_THONG.linkKhoi5;
-    
+
     const linkChungEl = document.getElementById("linkChung");
+    const linkChungEl2 = document.getElementById("linkChung2");
     if (linkChung && linkChung.trim() !== "") {
       linkChungEl.href = linkChung.trim();
       linkChungEl.textContent = "Mở thư mục chung khối →";
+      linkChungEl2.href = linkChung.trim();
     } else {
       linkChungEl.textContent = "Chưa cập nhật link";
       linkChungEl.href = "#";
+      linkChungEl2.href = "#";
     }
 
     // === Lọc danh sách giáo viên trong khối ===
@@ -127,23 +174,77 @@
       gv.khoiPhuTrach === khoiHienTai && gv.trangThai === "hoatdong"
     );
 
-    // === Kiểm tra có phải trưởng khối không ===
+    // === Quyền hạn ===
     const laTruongKhoi = thongTinDangNhap.chucVu === "Trưởng khối";
+    const tenDangNhapHienTai = thongTinDangNhap.user;
 
     // === Tìm thông tin giáo viên hiện tại ===
-    const gvHienTai = thanhVienTrongKhoi.find(gv => gv.tenDangNhap === thongTinDangNhap.user);
-    
-    // === Hiển thị nút tạo thư mục nếu chưa có link ===
-    if (gvHienTai && !gvHienTai.linkDriveHoSo) {
-      document.getElementById("khuVucTaoThuMuc").style.display = "block";
+    const gvHienTai = thanhVienTrongKhoi.find(gv => gv.tenDangNhap === tenDangNhapHienTai);
+    let linkDaCo = gvHienTai ? (gvHienTai.linkDriveHoSo || "") : "";
+
+    // === Hiển thị link hiện có nếu đã lưu ===
+    const khuVucLinkHienTai = document.getElementById("hienLinkHienTai");
+    const linkHienTaiEl = document.getElementById("linkHienTai");
+    if (linkDaCo) {
+      khuVucLinkHienTai.style.display = "block";
+      linkHienTaiEl.href = linkDaCo;
     }
+
+    // === Nút bật ô nhập link ===
+    const oNhapLink = document.getElementById("oNhapLink");
+    document.getElementById("btnHienOLink").addEventListener("click", () => {
+      oNhapLink.classList.toggle("active");
+      document.getElementById("inputLinkRieng").value = linkDaCo;
+    });
+    document.getElementById("btnDongOLink").addEventListener("click", () => {
+      oNhapLink.classList.remove("active");
+    });
+
+    // === Lưu link ===
+    document.getElementById("btnLuuLink").addEventListener("click", function() {
+      let linkMoi = document.getElementById("inputLinkRieng").value.trim();
+      
+      // Kiểm tra định dạng link
+      if (!linkMoi) {
+        alert("⚠️ Vui lòng dán đường link thư mục vào ô!");
+        return;
+      }
+      if (!linkMoi.startsWith("http")) {
+        alert("⚠️ Đường link không đúng!\nPhải bắt đầu bằng: https://drive.google.com/...");
+        return;
+      }
+      if (!linkMoi.includes("drive.google.com")) {
+        alert("⚠️ Đây không phải link Google Drive!\nVui lòng kiểm tra lại.");
+        return;
+      }
+
+      // Lưu vào localStorage phiên hiện tại
+      thongTinDangNhap.linkDriveHoSo = linkMoi;
+      localStorage.setItem("dangNhap", JSON.stringify(thongTinDangNhap));
+
+      // Cập nhật vào danh sách giáo viên
+      const indexGv = DANH_SACH_GIAO_VIEN.findIndex(gv => gv.tenDangNhap === tenDangNhapHienTai);
+      if (indexGv !== -1) {
+        DANH_SACH_GIAO_VIEN[indexGv].linkDriveHoSo = linkMoi;
+        if (typeof luuDuLieu === "function") luuDuLieu();
+      }
+
+      // Cập nhật giao diện
+      linkDaCo = linkMoi;
+      khuVucLinkHienTai.style.display = "block";
+      linkHienTaiEl.href = linkMoi;
+      oNhapLink.classList.remove("active");
+      
+      alert("✅ Lưu thành công!\nĐường link đã được cập nhật.");
+      window.location.reload();
+    });
 
     // === Hiển thị danh sách thành viên ===
     const vungDanhSach = document.getElementById("danhSachThanhVien");
     vungDanhSach.innerHTML = "";
 
     thanhVienTrongKhoi.forEach(gv => {
-      const laCuaToi = gv.tenDangNhap === thongTinDangNhap.user;
+      const laCuaToi = gv.tenDangNhap === tenDangNhapHienTai;
       const coTheMo = laCuaToi || laTruongKhoi;
 
       const theDiv = document.createElement("div");
@@ -151,23 +252,23 @@
 
       if (gv.linkDriveHoSo && coTheMo) {
         theDiv.innerHTML = `
-          <a href="${gv.linkDriveHoSo}" target="_blank" class="gv-link">
+          <a href="${gv.linkDriveHoSo}" target="_blank" style="text-decoration:none; color:inherit; display:block;">
             <span class="gv-name">${gv.hoTen}</span>
             <span class="gv-role">${gv.chucVu}</span>
             ${gv.lopPhuTrach ? `<br><small style="color:#666;">📚 Lớp: ${gv.lopPhuTrach}</small>` : ""}
-            <br><small style="color:#0052cc;">📂 Mở thư mục hồ sơ →</small>
+            <br><small style="color:#28a745; font-weight:bold;">📂 Mở thư mục hồ sơ →</small>
           </a>
         `;
       } else if (gv.linkDriveHoSo && !coTheMo) {
         theDiv.innerHTML = `
-          <div class="gv-link" style="cursor: not-allowed;">
+          <div style="cursor: not-allowed;">
             <span class="gv-name">${gv.hoTen}</span>
             <span class="gv-role">${gv.chucVu}</span>
             ${gv.lopPhuTrach ? `<br><small style="color:#666;">📚 Lớp: ${gv.lopPhuTrach}</small>` : ""}
             <br><small class="gv-nolink">🔒 Không có quyền xem</small>
           </div>
         `;
-        theDiv.querySelector(".gv-link").addEventListener("click", function(e) {
+        theDiv.querySelector("div").addEventListener("click", function(e) {
           e.preventDefault();
           document.getElementById("thongBaoKhongQuyen").style.display = "block";
         });
@@ -182,30 +283,6 @@
         `;
       }
       vungDanhSach.appendChild(theDiv);
-    });
-
-    // === Xử lý tạo thư mục cá nhân ===
-    document.getElementById("btnTaoThuMuc").addEventListener("click", function() {
-      const tenGiaoVien = thongTinDangNhap.ten.replace(/\s+/g, '.');
-      const linkMoi = prompt(
-        `📁 TẠO THƯ MỤC HỒ SƠ CÁ NHÂN\n\nBước 1: Tạo thư mục trên Google Drive với tên: "${tenGiaoVien}"\nBước 2: Tạo sẵn các thư mục con:\n- KHBD_WORD\n- KHBD_PPTX\n- BB_HOP_TO_CHUYEN_MON\n- KET_QUA_HK1\n- KET_QUA_HK2\n\nBước 3: Dán đường link thư mục chính vào bên dưới:`
-      );
-      
-      if (linkMoi && linkMoi.trim() !== "") {
-        // Cập nhật trong dữ liệu phiên
-        thongTinDangNhap.linkDriveHoSo = linkMoi.trim();
-        localStorage.setItem("dangNhap", JSON.stringify(thongTinDangNhap));
-        
-        // Cập nhật vào danh sách chung
-        const indexGv = DANH_SACH_GIAO_VIEN.findIndex(gv => gv.tenDangNhap === thongTinDangNhap.user);
-        if (indexGv !== -1) {
-          DANH_SACH_GIAO_VIEN[indexGv].linkDriveHoSo = linkMoi.trim();
-          luuDuLieu(); // Lưu vào localStorage
-        }
-        
-        alert("✅ Tạo thư mục thành công!\nĐường link đã được lưu tự động.");
-        window.location.reload();
-      }
     });
   </script>
 </body>
