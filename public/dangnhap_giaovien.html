@@ -53,10 +53,11 @@
       font-weight: bold;
       color: #333;
     }
-    .input-group {
+    .input-wrapper {
       position: relative;
     }
     .form-control {
+      width: 100%;
       padding: 12px 45px 12px 15px;
       border-radius: 8px;
       border: 1px solid #ced4da;
@@ -67,7 +68,7 @@
       box-shadow: 0 0 0 3px rgba(0,82,204,0.15);
       outline: none;
     }
-    .toggle-password {
+    .btn-eye {
       position: absolute;
       right: 12px;
       top: 50%;
@@ -80,7 +81,7 @@
       padding: 0;
       line-height: 1;
     }
-    .toggle-password:hover {
+    .btn-eye:hover {
       color: #0052cc;
     }
     .btn-login {
@@ -145,9 +146,9 @@
 
       <div class="mb-2">
         <label class="form-label">Mật khẩu</label>
-        <div class="input-group">
+        <div class="input-wrapper">
           <input type="password" id="matKhau" class="form-control" placeholder="Nhập mật khẩu" required autocomplete="current-password">
-          <button type="button" class="toggle-password" id="btnMatKhau" title="Hiện/Ẩn mật khẩu">👁️</button>
+          <button type="button" class="btn-eye" id="btnConMat" title="Hiện/Ẩn mật khẩu">👁️</button>
         </div>
       </div>
 
@@ -165,46 +166,44 @@
     </div>
   </div>
 
+  <!-- === GỮ NGUYÊN: Nạp dữ liệu chung === -->
+  <script src="du_lieu_chung.js"></script>
+
   <script>
-    // === Nút Hiện/Ẩn Mật khẩu ===
-    const matKhau = document.getElementById('matKhau');
-    const btnMatKhau = document.getElementById('btnMatKhau');
+    // === NÚT ẨN/HIỆN MẬT KHẨU ===
+    const oMatKhau = document.getElementById('matKhau');
+    const oBtnConMat = document.getElementById('btnConMat');
     let dangHien = false;
 
-    btnMatKhau.addEventListener('click', function() {
+    oBtnConMat.addEventListener('click', function () {
       dangHien = !dangHien;
-      matKhau.type = dangHien ? 'text' : 'password';
-      btnMatKhau.textContent = dangHien ? '🙈' : '👁️';
+      oMatKhau.type = dangHien ? 'text' : 'password';
+      oBtnConMat.textContent = dangHien ? '🙈' : '👁️';
     });
 
-    // === Xử lý đăng nhập ===
+    // === Giữ NGUYÊN logic đăng nhập cũ ===
     const formDangNhap = document.getElementById('formDangNhap');
     const thongBaoLoi = document.getElementById('thongBaoLoi');
 
-    formDangNhap.addEventListener('submit', function(e) {
+    formDangNhap.addEventListener('submit', function (e) {
       e.preventDefault();
       thongBaoLoi.style.display = 'none';
 
       const ten = document.getElementById('tenDangNhap').value.trim();
       const mk = document.getElementById('matKhau').value.trim();
 
-      // Đọc dữ liệu giáo viên từ localStorage / file chung
-      const danhSachGV = JSON.parse(localStorage.getItem("danhSachGiaoVien") || "[]");
-      
-      // Tìm giáo viên khớp thông tin
-      const gv = danhSachGV.find(item => 
+      // Dùng DANH_SACH_GIAO_VIEN từ file du_lieu_chung.js
+      const gv = DANH_SACH_GIAO_VIEN?.find(item =>
         item.tenDangNhap === ten && item.matKhau === mk
       );
 
       if (gv) {
-        // Lưu trạng thái đăng nhập
         localStorage.setItem("dangNhap", JSON.stringify({
           id: gv.id,
           hoTen: gv.hoTen,
           laAdmin: false,
           thoiGian: new Date().toLocaleString('vi-VN')
         }));
-        // Chuyển đến trang cá nhân
         window.location.href = "trangcanhan.html";
       } else {
         thongBaoLoi.style.display = 'block';
@@ -214,7 +213,7 @@
     });
 
     // === Quên mật khẩu ===
-    document.getElementById('linkQuenMK').addEventListener('click', function(e) {
+    document.getElementById('linkQuenMK').addEventListener('click', function (e) {
       e.preventDefault();
       alert('Chức năng quên mật khẩu đang được nâng cấp!\nVui lòng liên hệ Quản trị viên để được cấp lại mật khẩu.');
     });
