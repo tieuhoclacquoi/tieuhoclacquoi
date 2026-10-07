@@ -15,7 +15,7 @@ const CAIDAT_HE_THONG = {
   linkKhoi2: "https://drive.google.com/drive/folders/1WQEy2v4FiYoA7ZNbLutBin22NQToqwl8", // Bạn điền link thư mục KHỐI 2 vào đây
   linkKhoi3: "https://drive.google.com/drive/folders/11Yx-QWPINPsVg3wCm1uiLK4-Uep3CN4S", // Bạn điền link thư mục KHỐI 3 vào đây
   linkKhoi4: "https://drive.google.com/drive/folders/12y8ctjYCkmh66OZeRfet4AyNiz56GGTI", // Bạn điền link thư mục KHỐI 4 vào đây
-  linkKhoi5: "https://drive.google.com/drive/folders/1db9rarIEFxKukHUwgLVpsvZajiGKpp17"  // Bạn điền link thư mục KHỐI 5 vào đây
+  linkKhoi5: "https://drive.google.com/drive/folders/1db9rarIEFxKukHUwgLVpsvZajiGKpp17",  // Bạn điền link thư mục KHỐI 5 vào đây
   
   // === Link thư mục tổng trường ===
   linkTruong: "https://drive.google.com/drive/folders/1SA77KUhA24fizpGUjqjqkkwPq0voUwA6"
