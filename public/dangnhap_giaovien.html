@@ -94,7 +94,7 @@
       </form>
     </div>
 
-    <!-- PHẦN QUÊN MẬT KHẨU (GIỮ NGUYÊN) -->
+    <!-- PHẦN QUÊN MẬT KHẨU -->
     <div class="forgot-section" id="forgotSection">
       <h5 style="color:#0052cc; font-weight:bold; margin-bottom:20px;">🔑 Khôi phục mật khẩu</h5>
       <div class="mb-3 text-start">
@@ -128,11 +128,10 @@
     document.getElementById("tenTruong").textContent = CAIDAT_HE_THONG.tenTruong;
     let cachChon = null;
 
-    // === NÚT ẨN/HIỆN MẬT KHẨU — THÊM MỚI ===
+    // === NÚT ẨN/HIỆN MẬT KHẨU ===
     const oMatKhau = document.getElementById('password');
     const oBtnMatKhau = document.getElementById('btnMatKhau');
     let dangHien = false;
-
     oBtnMatKhau.addEventListener('click', function () {
       dangHien = !dangHien;
       oMatKhau.type = dangHien ? 'text' : 'password';
@@ -180,19 +179,34 @@
       document.getElementById("thongtinLienHe").textContent = thongBao;
     }
 
-    // === ĐĂNG NHẬP ===
+    // === ĐĂNG NHẬP → TỰ CHUYỂN ĐẾN TRANG KHỐI ===
     document.getElementById("loginForm").onsubmit = function(e) {
       e.preventDefault();
       const u = document.getElementById("username").value.trim();
       const p = document.getElementById("password").value.trim();
-      const gv = DANH_SACH_GIAO_VIEN.find(g => g.tenDangNhap === u && g.matKhau === p && !g.laAdmin && g.trangThai === "hoatdong");
+      const gv = DANH_SACH_GIAO_VIEN.find(g => 
+        g.tenDangNhap === u && 
+        g.matKhau === p && 
+        !g.laAdmin && 
+        g.trangThai === "hoatdong"
+      );
       
       if (gv) {
-        localStorage.setItem("dangNhap", JSON.stringify({ ten: gv.hoTen, user: gv.tenDangNhap, laAdmin: false, maGV: gv.maGV }));
+        localStorage.setItem("dangNhap", JSON.stringify({
+          id: gv.id,
+          ten: gv.hoTen,
+          user: gv.tenDangNhap,
+          laAdmin: false,
+          maGV: gv.maGV,
+          khoi: gv.khoiPhuTrach,
+          chucVu: gv.chucVu,
+          linkDriveHoSo: gv.linkDriveHoSo || ""
+        }));
         if (typeof ghiNhatKy === "function") {
           ghiNhatKy(gv.hoTen, "Đăng nhập", "Thành công");
         }
-        window.location.href = "trangcanhan.html";
+        // === TỰ CHUYỂN ĐẾN TRANG KHỐI CỦA MÌNH ===
+        window.location.href = `trang_khoi.html?khoi=${encodeURIComponent(gv.khoiPhuTrach)}`;
       } else {
         document.getElementById("errorAlert").style.display = "block";
         document.getElementById("password").value = "";
