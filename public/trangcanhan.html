@@ -141,7 +141,20 @@
     </div>
 
     <div class="d-flex justify-content-between">
-      <a href="index.html" class="btn btn-secondary">← Quay lại Trang chủ</a>
+      <button type="button" class="btn btn-secondary" onclick="quayLaiKhoi()">← Quay lại Trang Khối</button>
+      <script>
+        // Xác định khối của người dùng hiện tại
+        function quayLaiKhoi() {
+          const thongTin = JSON.parse(localStorage.getItem("dangNhap") || "null");
+          if (thongTin && thongTin.khoi) {
+            window.location.href = `trang_khoi.html?khoi=${encodeURIComponent(thongTin.khoi)}`;
+          } else {
+            // Nếu không có thông tin → về trang chủ
+            window.location.href = "index.html";
+          }
+        }
+      </script>  
+      
       <button class="btn-thoat" onclick="dangXuat()">Đăng Xuất</button>
     </div>
   </div>
