@@ -7,9 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #f0f4f8; font-family: "Times New Roman", sans-serif; padding: 20px;
-    }
+    body { background: #f0f4f8; font-family: "Times New Roman", sans-serif; padding: 20px; }
     .header-bar {
       background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
       color: white; padding: 20px 30px; border-radius: 12px;
@@ -40,6 +38,8 @@
       z-index: 9999; display: none; text-align: center; max-width: 400px;
     }
     .btn-back { display: inline-block; margin-top: 20px; color: #0052cc; text-decoration: none; }
+    .khoi-link-bar { background: #e7f0ff; border-left: 4px solid #0052cc; padding: 12px 18px; border-radius: 8px; margin-bottom: 20px; }
+    .khoi-link-bar a { color: #0052cc; font-weight: bold; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -52,17 +52,27 @@
       </div>
       <div class="user-info">
         <p id="tenNguoiDung">Xin chào: Trần Phan Diễm Trang</p>
-        <a href="trangcanhan.html" class="btn-setting">⚙️ Cập nhật thông tin</a>
+        <a href="trangcanhan.html" class="btn-setting">⚙️ Cập nhật thông tin cá nhân</a>
         <a href="index.html" class="btn-setting">🚪 Đăng xuất</a>
       </div>
+    </div>
+
+    <!-- Link thư mục chung của khối -->
+    <div class="khoi-link-bar" id="linkKhoiChung">
+      📂 <strong>Thư mục chung khối:</strong>
+      <a href="#" id="linkChung" target="_blank">Chưa cập nhật link</a>
     </div>
 
     <!-- Nút tạo thư mục cá nhân - chỉ hiện khi chưa có link -->
     <div id="khuVucTaoThuMuc" style="display: none; margin-bottom: 25px;">
       <div class="alert alert-warning">
-        <strong>👋 Chào bạn!</strong> Bạn chưa có thư mục hồ sơ. Vui lòng tạo thư mục cá nhân để lưu trữ tài liệu.
+        <strong>👋 Chào bạn!</strong> Bạn chưa có thư mục hồ sơ cá nhân. Vui lòng tạo thư mục để lưu trữ tài liệu.
       </div>
       <button class="btn-create-folder" id="btnTaoThuMuc">📁 TẠO THƯ MỤC HỒ SƠ CỦA TÔI (Bắt buộc)</button>
+      <small style="color:#666;">
+        Sau khi tạo thư mục trên Google Drive, bạn tạo sẵn các thư mục con:<br>
+        KHBD_WORD | KHBD_PPTX | BB_HOP_TO_CHUYEN_MON | KET_QUA_HK1 | KET_QUA_HK2
+      </small>
     </div>
 
     <!-- DANH SÁCH THÀNH VIÊN KHỐI -->
@@ -75,15 +85,17 @@
   <!-- Thông báo không có quyền -->
   <div class="alert-no-permission" id="thongBaoKhongQuyen">
     <h4 style="color: #dc3545;">⚠️ Không có quyền truy cập</h4>
-    <p>Bạn không có quyền mở thư mục hồ sơ của giáo viên này.</p>
-    <button class="btn btn-secondary" onclick="document.getElementById('thongBaoKhongQuyen').style.display='none'">Đóng</button>
+    <p>Bạn chỉ có quyền mở thư mục hồ sơ của chính mình.<br>Nếu cần xem hồ sơ người khác, vui lòng liên hệ Trưởng khối.</p>
+    <button class="btn btn-secondary mt-2" onclick="document.getElementById('thongBaoKhongQuyen').style.display='none'">Đóng</button>
   </div>
 
   <script src="du_lieu_chung.js"></script>
   <script>
-    // === Lấy thông tin người dùng hiện tại ===
+    // === Kiểm tra đăng nhập ===
     const thongTinDangNhap = JSON.parse(localStorage.getItem("dangNhap") || "null");
-    if (!thongTinDangNhap) { window.location.href = "dangnhap_giaovien.html"; }
+    if (!thongTinDangNhap) { 
+      window.location.href = "dangnhap_giaovien.html"; 
+    }
 
     // === Lấy khối từ đường link ===
     const params = new URLSearchParams(window.location.search);
@@ -93,6 +105,23 @@
     document.getElementById("tenKhoi").textContent = `📁 ${khoiHienTai.toUpperCase()}`;
     document.getElementById("tenNguoiDung").textContent = `Xin chào: ${thongTinDangNhap.ten}`;
 
+    // === Hiển thị link thư mục chung khối ===
+    let linkChung = "";
+    if (khoiHienTai === "Khối 1") linkChung = CAIDAT_HE_THONG.linkKhoi1;
+    else if (khoiHienTai === "Khối 2") linkChung = CAIDAT_HE_THONG.linkKhoi2;
+    else if (khoiHienTai === "Khối 3") linkChung = CAIDAT_HE_THONG.linkKhoi3;
+    else if (khoiHienTai === "Khối 4") linkChung = CAIDAT_HE_THONG.linkKhoi4;
+    else if (khoiHienTai === "Khối 5") linkChung = CAIDAT_HE_THONG.linkKhoi5;
+    
+    const linkChungEl = document.getElementById("linkChung");
+    if (linkChung) {
+      linkChungEl.href = linkChung;
+      linkChungEl.textContent = "Mở thư mục chung khối →";
+    } else {
+      linkChungEl.textContent = "Chưa cập nhật link — Admin sẽ cập nhật sau";
+      document.getElementById("linkKhoiChung").style.opacity = "0.7";
+    }
+
     // === Lọc danh sách giáo viên trong khối ===
     const thanhVienTrongKhoi = DANH_SACH_GIAO_VIEN.filter(gv => 
       gv.khoiPhuTrach === khoiHienTai && gv.trangThai === "hoatdong"
@@ -101,13 +130,15 @@
     // === Kiểm tra có phải trưởng khối không ===
     const laTruongKhoi = thongTinDangNhap.chucVu === "Trưởng khối";
 
-    // === Hiển thị nút tạo thư mục nếu chưa có ===
+    // === Tìm thông tin giáo viên hiện tại ===
     const gvHienTai = thanhVienTrongKhoi.find(gv => gv.tenDangNhap === thongTinDangNhap.user);
+    
+    // === Hiển thị nút tạo thư mục nếu chưa có link ===
     if (gvHienTai && !gvHienTai.linkDriveHoSo) {
       document.getElementById("khuVucTaoThuMuc").style.display = "block";
     }
 
-    // === Tạo danh sách thành viên ===
+    // === Hiển thị danh sách thành viên ===
     const vungDanhSach = document.getElementById("danhSachThanhVien");
     vungDanhSach.innerHTML = "";
 
@@ -128,7 +159,7 @@
         `;
       } else if (gv.linkDriveHoSo && !coTheMo) {
         theDiv.innerHTML = `
-          <div class="gv-link" onclick="hienThongBaoKhongQuyen(); return false;">
+          <div class="gv-link" id="khoa_${gv.id}">
             <span class="gv-name">${gv.hoTen}</span>
             <span class="gv-role">${gv.chucVu}</span>
             <br><small class="gv-nolink">🔒 Không có quyền xem</small>
@@ -143,7 +174,7 @@
           <div>
             <span class="gv-name gv-nolink">${gv.hoTen}</span>
             <span class="gv-role">${gv.chucVu}</span>
-            <br><small class="gv-nolink">⏳ Chưa tạo thư mục</small>
+            <br><small class="gv-nolink">⏳ Chưa tạo thư mục hồ sơ</small>
           </div>
         `;
       }
@@ -151,26 +182,4 @@
     });
 
     // === Xử lý tạo thư mục cá nhân ===
-    document.getElementById("btnTaoThuMuc").addEventListener("click", function() {
-      const linkMoi = prompt(
-        `📁 TẠO THƯ MỤC HỒ SƠ CÁ NHÂN\n\nBước 1: Tạo thư mục trên Google Drive với tên: "${thongTinDangNhap.ten.replace(/\s+/g, '.')}"\nBước 2: Tạo các thư mục con sẵn:\n- KHBD_WORD\n- KHBD_PPTX\n- BB_HOP_TO_CHUYEN_MON\n- KET_QUA_HK1\n- KET_QUA_HK2\n\nBước 3: Nhập đường link thư mục chính vào bên dưới:`
-      );
-      
-      if (linkMoi && linkMoi.trim() !== "") {
-        // Lưu vào localStorage phiên làm việc
-        thongTinDangNhap.linkDriveHoSo = linkMoi.trim();
-        localStorage.setItem("dangNhap", JSON.stringify(thongTinDangNhap));
-        
-        // Cập nhật vào danh sách chung (để Admin & Trưởng khối cũng thấy)
-        const indexGv = DANH_SACH_GIAO_VIEN.findIndex(gv => gv.tenDangNhap === thongTinDangNhap.user);
-        if (indexGv !== -1) {
-          DANH_SACH_GIAO_VIEN[indexGv].linkDriveHoSo = linkMoi.trim();
-        }
-        
-        alert("✅ Tạo thư mục thành công!\nĐường link đã được lưu tự động.");
-        window.location.reload();
-      }
-    });
-  </script>
-</body>
-</html>
+    document
