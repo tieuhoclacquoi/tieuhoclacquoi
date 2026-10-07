@@ -6,11 +6,7 @@
   <title>Đăng nhập Quản trị | Trường Tiểu học Lạc Quới</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: linear-gradient(135deg, #212529 0%, #495057 100%);
       min-height: 100vh;
@@ -21,125 +17,53 @@
       padding: 20px;
     }
     .login-card {
-      background: white;
-      border-radius: 16px;
-      padding: 40px 30px;
-      width: 100%;
-      max-width: 450px;
+      background: white; border-radius: 16px; padding: 40px 30px;
+      width: 100%; max-width: 450px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.25);
     }
-    .logo-box {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .logo-img {
-      height: 90px;
-      margin-bottom: 15px;
-    }
+    .logo-box { text-align: center; margin-bottom: 25px; }
+    .logo-img { height: 90px; margin-bottom: 15px; }
     .school-name {
-      font-size: 28px;
-      font-weight: bold;
-      color: #212529;
-      text-align: center;
-      line-height: 1.3;
+      font-size: 28px; font-weight: bold; color: #212529;
+      text-align: center; line-height: 1.3;
     }
-    .page-subtitle {
-      text-align: center;
-      color: #666;
-      font-size: 18px;
-      margin: 10px 0 30px;
-    }
-    .form-label {
-      font-weight: bold;
-      color: #333;
-    }
-    .input-wrapper {
-      position: relative;
-    }
+    .page-subtitle { text-align: center; color: #666; font-size: 18px; margin: 10px 0 30px; }
+    .form-label { font-weight: bold; color: #333; }
+    .input-wrapper { position: relative; }
     .form-control {
-      width: 100%;
-      padding: 12px 45px 12px 15px;
-      border-radius: 8px;
-      border: 1px solid #ced4da;
-      font-size: 16px;
+      width: 100%; padding: 12px 45px 12px 15px;
+      border-radius: 8px; border: 1px solid #ced4da; font-size: 16px;
     }
     .form-control:focus {
       border-color: #212529;
-      box-shadow: 0 0 0 3px rgba(33,37,41,0.15);
-      outline: none;
+      box-shadow: 0 0 0 3px rgba(33,37,41,0.15); outline: none;
     }
     .btn-eye {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: #6c757d;
-      cursor: pointer;
-      padding: 0;
-      line-height: 1;
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; font-size: 20px;
+      color: #6c757d; cursor: pointer; padding: 0; line-height: 1;
     }
-    .btn-eye:hover {
-      color: #212529;
-    }
+    .btn-eye:hover { color: #212529; }
     .btn-login {
-      width: 100%;
-      padding: 14px;
-      background: #212529;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
-      transition: 0.2s;
+      width: 100%; padding: 14px; background: #212529;
+      color: white; border: none; border-radius: 8px;
+      font-size: 18px; font-weight: bold; margin-top: 10px; transition: 0.2s;
     }
-    .btn-login:hover {
-      background: #000;
-      transform: translateY(-2px);
-    }
-    .forgot-link {
-      text-align: right;
-      margin: 10px 0 20px;
-    }
-    .forgot-link a {
-      color: #212529;
-      text-decoration: none;
-    }
-    .forgot-link a:hover {
-      text-decoration: underline;
-    }
-    .back-link {
-      text-align: center;
-      margin-top: 25px;
-    }
-    .back-link a {
-      color: #212529;
-      text-decoration: none;
-    }
-    .back-link a:hover {
-      text-decoration: underline;
-    }
-    .error-msg {
-      color: #dc3545;
-      text-align: center;
-      margin-top: 15px;
-      display: none;
-    }
-    .note-text {
-      font-size: 13px;
-      color: #888;
-      text-align: center;
-      margin-top: 15px;
-    }
+    .btn-login:hover { background: #000; transform: translateY(-2px); }
+    .forgot-link { text-align: right; margin: 10px 0 20px; }
+    .forgot-link a { color: #212529; text-decoration: none; }
+    .forgot-link a:hover { text-decoration: underline; }
+    .back-link { text-align: center; margin-top: 25px; }
+    .back-link a { color: #212529; text-decoration: none; }
+    .back-link a:hover { text-decoration: underline; }
+    .error-msg { color: #dc3545; text-align: center; margin-top: 15px; display: none; }
+    .note-text { font-size: 13px; color: #888; text-align: center; margin-top: 15px; }
   </style>
 </head>
 <body>
   <div class="login-card">
     <div class="logo-box">
-      <img src="logo_truong.png" alt="Logo Trường Tiểu học Lạc Quới" class="logo-img" onerror="this.style.display='none'">
+      <img src="logo_truong.png" alt="Logo Trường" class="logo-img" onerror="this.style.display='none'">
       <h1 class="school-name">TRƯỜNG TIỂU HỌC LẠC QUỚI</h1>
       <p class="page-subtitle">⚙️ Đăng nhập — Quản trị Hệ thống</p>
     </div>
@@ -163,7 +87,6 @@
       </div>
 
       <button type="submit" class="btn-login">Đăng Nhập Hệ Thống</button>
-
       <div class="error-msg" id="thongBaoLoi">Tên đăng nhập hoặc mật khẩu không đúng!<br>Chỉ quản trị viên mới được truy cập trang này.</div>
     </form>
 
@@ -174,22 +97,19 @@
     </div>
   </div>
 
-  <!-- === Nạp dữ liệu chung === -->
   <script src="du_lieu_chung.js"></script>
-
   <script>
     // === NÚT ẨN/HIỆN MẬT KHẨU ===
     const oMatKhau = document.getElementById('matKhau');
     const oBtnConMat = document.getElementById('btnConMat');
     let dangHien = false;
-
     oBtnConMat.addEventListener('click', function () {
       dangHien = !dangHien;
       oMatKhau.type = dangHien ? 'text' : 'password';
       oBtnConMat.textContent = dangHien ? '🙈' : '👁️';
     });
 
-    // === KIỂM TRA ĐĂNG NHẬP QUẢN TRỊ ===
+    // === ĐĂNG NHẬP → VÀO THẲNG TRANG QUẢN LÝ ===
     const formDangNhap = document.getElementById('formDangNhap');
     const thongBaoLoi = document.getElementById('thongBaoLoi');
 
@@ -200,7 +120,6 @@
       const ten = document.getElementById('tenDangNhap').value.trim();
       const mk = document.getElementById('matKhau').value.trim();
 
-      // Tìm tài khoản có quyền Admin
       const admin = DANH_SACH_GIAO_VIEN?.find(item =>
         item.tenDangNhap === ten &&
         item.matKhau === mk &&
@@ -214,8 +133,8 @@
           laAdmin: true,
           thoiGian: new Date().toLocaleString('vi-VN')
         }));
-        // Chuyển về trang chủ → tự hiện nút quản lý
-        window.location.href = "index.html";
+        // VÀO THẲNG TRANG QUẢN LÝ luôn, không cần qua trang chủ
+        window.location.href = "quanly.html";
       } else {
         thongBaoLoi.style.display = 'block';
         document.getElementById('matKhau').value = '';
